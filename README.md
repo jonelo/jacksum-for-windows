@@ -1,6 +1,6 @@
 # Jacksum FBI for Windows
 
-Jacksum File Browser Integration for Microsoft Windows.
+The Jacksum File Browser Integration for Microsoft Windows allows you to access features of [Jacksum](https://github.com/jonelo/jacksum) from the Send To menu at the Microsoft Windows Explorer.
 
 ## Download
 
