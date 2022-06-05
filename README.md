@@ -21,6 +21,8 @@ Allow Microsoft Defender SmartScreen to start the app. Before you do that you sh
 
 After a menu item has been selected, [HashGarten](https://github.com/jonelo/HashGarten) resp. [Jacksum](https://github.com/jonelo/jacksum) take over.
 
+A video is available at https://www.youtube.com/watch?v=aLE6y7Osjac
+
 ## Customization
 
 You can modify the batch (menu item 4 at the Send To menu) if the default does not meet your need.
