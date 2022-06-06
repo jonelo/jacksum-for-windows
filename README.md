@@ -36,4 +36,4 @@ The installer called sendto.nsi is written in NSIS. You need the NSIS compiler t
 - HashGarten - https://github.com/jonelo/HashGarten
 - Jacksum - https://github.com/jonelo/jacksum
 - FlatLaF - https://github.com/JFormDesigner/FlatLaf
-- OpenJDK Runtime 17.0.3 - https://adoptium.net
+- OpenJDK Runtime 11+ - https://adoptium.net
