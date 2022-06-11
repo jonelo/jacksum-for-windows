@@ -23,6 +23,9 @@ After a menu item has been selected, [HashGarten](https://github.com/jonelo/Hash
 
 A video is available at https://www.youtube.com/watch?v=aLE6y7Osjac
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=aLE6y7Osjac" target="_blank"><img src="http://img.youtube.com/vi/aLE6y7Osjac/0.jpg" 
+alt="Jacksum and HashGarten integrated at the Windows Explorer" width="240" height="180" border="10" /></a>
+
 ## Customization
 
 You can modify the batch (menu item 4 at the Send To menu) if the default does not meet your need.
