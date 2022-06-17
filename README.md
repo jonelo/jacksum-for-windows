@@ -2,6 +2,11 @@
 
 The Jacksum File Browser Integration for Microsoft Windows allows you to access features of [Jacksum](https://github.com/jonelo/jacksum) through [HashGarten](https://github.com/jonelo/HashGarten) from the Send To menu at the Microsoft Windows Explorer.
 
+## Requirements
+
+  * Microsoft Windows 10 or 11 (well, it actually also works with older releases, but those are not recommended to use anymore due to security reasons)
+  * Microsoft Windows Explorer or any Windows-based file managers that use the Windows Standard "Send To"-API, such as the [Explorer++]/(https://github.com/derceg/explorerplusplus) (GPLv3), FreeCommander (Freeware), Multi Commander (Freeware), Q-Dir (Freeware), etc.
+
 ## Download
 
 Go to https://github.com/jonelo/jacksum-fbi-windows/releases/latest and download the .zip which contains a precompiled executable for Microsoft Windows.
