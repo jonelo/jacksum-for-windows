@@ -33,7 +33,7 @@ alt="Jacksum and HashGarten integrated at the Windows Explorer" width="240" heig
 
 ## Customization
 
-You can modify the batch (menu item 4 at the Send To menu) if the default does not meet your need.
+You can modify the batch (just select item 4 at the Send To menu) if the default customized format does not meet your need or if you use a different editor rather than the Windows Notepad.
 
 ## Developer hints
 
