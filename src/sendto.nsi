@@ -1,7 +1,7 @@
 ﻿Unicode True
-!define VERSION "2.0.0"
-!define JACKSUM_VERSION "3.3.0"
-!define HASHGARTEN_VERSION "0.9.0"
+!define VERSION "2.1.0"
+!define JACKSUM_VERSION "3.4.0"
+!define HASHGARTEN_VERSION "0.11.0"
 !define URL "https://jacksum.net"
 !define APPNAME "Jacksum ${JACKSUM_VERSION} Windows Explorer Integration ${VERSION}"
 !addplugindir .
@@ -31,7 +31,7 @@ LangString Success ${LANG_ENGLISH} \
   $\n\
   $\n$OUTDIR\
   $\n\
-  $\nFrom the Windows Explorer "Send To" menu, you can call HashGarten\
+  $\nFrom the Windows Explorer "Send To" menu, you can call Jacksum and HashGarten \
   in order to compute and verify hash values with Jacksum.'
 
 LangString Success ${LANG_GERMAN} \
@@ -43,7 +43,7 @@ LangString Success ${LANG_GERMAN} \
   $\n$OUTDIR\
   $\n\
   $\nAus dem "Senden an" Menü des Windows Explorers können Sie nun \
-  HashGarten aufrufen, um Hashwerte mit Jacksum zu berechnen und zu überprüfen.'
+  Jacksum und HashGarten aufrufen, um Hashwerte mit Jacksum zu berechnen und zu überprüfen.'
 
 
 LangString CmdSelect ${LANG_ENGLISH}      'Calculate hash values'
@@ -100,6 +100,14 @@ Section
   Push all # replace all occurrences
   Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum.bat"
   Call AdvReplaceInFile
+  
+  Push @JACKSUM_VERSION@   # text to be replaced
+  Push "${JACKSUM_VERSION}"  # replace with
+  Push all # replace all occurrences
+  Push all # replace all occurrences
+  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum.bat"
+    Call AdvReplaceInFile
+
 
   SetOutPath "$PROFILE\Jacksum Windows Explorer Integration"
   File jacksum-sendto.bat
@@ -124,6 +132,23 @@ Section
   Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum-sendto.bat"
     Call AdvReplaceInFile
 
+  Push @JACKSUM_VERSION@   # text to be replaced
+  Push "${JACKSUM_VERSION}"  # replace with
+  Push all # replace all occurrences
+  Push all # replace all occurrences
+  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum-sendto.bat"
+    Call AdvReplaceInFile
+
+  Push @HASHGARTEN_VERSION@   # text to be replaced
+  Push "${HASHGARTEN_VERSION}"  # replace with
+  Push all # replace all occurrences
+  Push all # replace all occurrences
+  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum-sendto.bat"
+    Call AdvReplaceInFile
+
+  # remove the properties file because the old one is incompatible
+  Delete $PROFILE\.HashGarten.properties  
+
   # write files to the SendTo directory
   Delete $SENDTO\Jacksum*
   RMdir /r $SENDTO\Jacksum
@@ -140,7 +165,7 @@ Section
   # --start generated--
   # --end generated--
 
-  CreateShortCut "$SENDTO\Jacksum - 1) $(CmdSelect).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_select     " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
+  CreateShortCut "$SENDTO\Jacksum - 1) $(CmdSelect).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_gui        " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
   CreateShortCut "$SENDTO\Jacksum - 2) $(CheckIntegrity).lnk" "$OUTDIR\jacksum-sendto.bat" "cmd_check      " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
   CreateShortCut "$SENDTO\Jacksum - 3) $(Customized).lnk"     "$OUTDIR\jacksum-sendto.bat" "cmd_custom     " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
   CreateShortCut "$SENDTO\Jacksum - 4) $(EditBatch).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_edit       " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
@@ -292,4 +317,3 @@ Section "Uninstall"
   #MessageBox MB_ICONINFORMATION|MB_OK|MB_SETFOREGROUND $(Uninstall) IDOK +1
   #Quit
 SectionEnd
-

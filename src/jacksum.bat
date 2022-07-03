@@ -1,2 +1,2 @@
 @echo off
-"@JAVA@" -jar "@PATH@\jacksum.jar" %*
+"@JAVA@" -jar "@PATH@\jacksum-@JACKSUM_VERSION@.jar" %*

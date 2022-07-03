@@ -168,13 +168,13 @@ rem set NOTEPAD=%ProgramFiles%\Notepad++\notepad++.exe
 
 rem init Jacksum values
 set JACKSUM_URL=https://jacksum.net
-set JACKSUM_VERSION=3.3.0
+set JACKSUM_VERSION=@JACKSUM_VERSION@
 set JACKSUM_JAR="@PATH@\jacksum-%JACKSUM_VERSION%.jar"
 :: Development only
 :: copy /y "C:\Users\Johann\IdeaProjects\jacksum\target\jacksum-%JACKSUM_VERSION%.jar" "@PATH@"
 
 rem init HashGarten values
-set HASHGARTEN_VERSION=0.9.0
+set HASHGARTEN_VERSION=@HASHGARTEN_VERSION@
 set HASHGARTEN_JAR="@PATH@\HashGarten-%HASHGARTEN_VERSION%.jar"
 :: Development only
 :: copy /y "C:\Users\Johann\.m2\repository\net\jacksum\HashGarten\%HASHGARTEN_VERSION%\HashGarten-%HASHGARTEN_VERSION%.jar" "@PATH@"
@@ -194,7 +194,6 @@ rem ----
 :main
 goto init
 :init_done
-rem echo "%1" > c:\temp\was.txt
 if "" == "%1" goto usage
 set PARAMS=%*
 rem strip the first 16 characters, because those contain the cmd_xxxxx string
@@ -202,7 +201,7 @@ echo %PARAMS:~16% > %FILE_LIST%
 rem from here Java is required
 goto javacheck
 :javafound
-if "cmd_select" == "%1" goto gui
+if "cmd_gui" == "%1" goto gui
 if "cmd_latest" == "%1" goto latest
 if "cmd_all" == "%1" goto all
 if "cmd_check" == "%1" goto check
@@ -222,18 +221,19 @@ echo For more information go to %JACKSUM_URL%
 pause
 goto end
 
+
 rem -----
 rem In case of error
 rem -----
 :error
-
 goto end
 
+
 rem -----
-rem In case of error, and cancel
+rem In case of cancel
 rem -----
 :cancel
-got end
+goto end
 
 
 rem -----
