@@ -7,7 +7,14 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
 ## Requirements
 
   * Microsoft Windows 10 or 11 (well, it actually also works with older releases, but those are not recommended to use anymore due to security reasons)
-  * Microsoft Windows Explorer or any Windows-based file managers that support the Windows Standard "Send To"-API, such as the [Double Commander](https://sourceforge.net/projects/doublecmd/) (GPLv2), [Explorer++](https://github.com/derceg/explorerplusplus) (GPLv3), FreeCommander (Freeware), Multi Commander (Freeware), Q-Dir (Freeware), etc.
+  * Any Windows-based file manager that supports the Windows Standard "Send To"-API:
+    * Microsoft Windows Explorer or
+    * [Double Commander](https://sourceforge.net/projects/doublecmd/) (GPLv2) or
+    * [Explorer++](https://github.com/derceg/explorerplusplus) (GPLv3) or
+    * FreeCommander (Freeware), Multi Commander (Freeware), Q-Dir (Freeware), etc.
+  * Processor with x64 chip set
+  * ~128 MiB free RAM
+  * ~128 MiB free disk space
 
 ## Download
 
