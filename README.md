@@ -9,7 +9,7 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
   * Microsoft Windows 10 or 11 (well, it actually also works with older releases, but those are not recommended to use anymore due to security reasons)
   * Any Windows-based file manager that supports the Windows Standard "Send To"-API. Tested examples:
     * Microsoft Windows Explorer or
-    * [Double Commander](https://sourceforge.net/projects/doublecmd/) (GPLv2), [Explorer++](https://github.com/derceg/explorerplusplus) (GPLv3) or
+    * [Double Commander](https://sourceforge.net/projects/doublecmd/) (GPLv2), [Explorer++](https://github.com/derceg/explorerplusplus) (GPLv3), [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) (MIT) or
     * Altap Salamander (Freeware), FileVoyager (Freeware), FreeCommander (Freeware), Multi Commander (Freeware), Q-Dir (Freeware) or
     * Directory Opus (commercial), EF Commander (commercial), SpeedCommander (commercial), xplorer² (commercial), XYplorer (commercial)
   * Processor with x64 chip set
