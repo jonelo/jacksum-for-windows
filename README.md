@@ -11,7 +11,7 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
     * Microsoft Windows Explorer or
     * [Double Commander](https://sourceforge.net/projects/doublecmd/) (GPLv2), [Explorer++](https://github.com/derceg/explorerplusplus) (GPLv3) or
     * Altap Salamander (Freeware), FileVoyager (Freeware), FreeCommander (Freeware), Multi Commander (Freeware), Q-Dir (Freeware) or
-    * Directory Opus (commercial), EF Commander (commercial), xplorer² (commercial), XYplorer (commercial)
+    * Directory Opus (commercial), EF Commander (commercial), SpeedCommander (commercial), xplorer² (commercial), XYplorer (commercial)
   * Processor with x64 chip set
   * ~128 MiB free RAM
   * ~128 MiB free disk space
