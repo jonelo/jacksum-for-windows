@@ -1,7 +1,8 @@
 ﻿Unicode True
-!define VERSION "2.1.0"
-!define JACKSUM_VERSION "3.4.0"
-!define HASHGARTEN_VERSION "0.11.0"
+!define VERSION "2.2.0"
+!define JACKSUM_VERSION "3.5.0"
+!define HASHGARTEN_VERSION "0.12.0"
+!define FLATLAF_VERSION "3.0"
 !define URL "https://jacksum.net"
 !define APPNAME "Jacksum ${JACKSUM_VERSION} Windows Explorer Integration ${VERSION}"
 !addplugindir .
@@ -114,7 +115,7 @@ Section
   File jacksum-sendto.ico
   File jacksum-${JACKSUM_VERSION}.jar
   File HashGarten-${HASHGARTEN_VERSION}.jar
-  File flatlaf-2.3.jar
+  File flatlaf-${FLATLAF_VERSION}.jar
   File license.txt
   File /r jre
 

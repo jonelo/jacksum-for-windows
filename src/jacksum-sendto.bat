@@ -4,7 +4,7 @@ rem
 rem Jacksum Windows Explorer Integration
 rem
 rem powered by Jacksum, <https://jacksum.net>,
-rem Copyright (c) 2006-2022 Johann N. Loefflmann,
+rem Copyright (c) 2006-2023 Johann N. Loefflmann,
 rem <https://johann.loefflmann.net>
 rem
 rem ===============================================
