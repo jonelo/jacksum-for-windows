@@ -6,15 +6,21 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
 
 ## Requirements
 
-  * Microsoft Windows 10 or 11 (well, it actually also works with older releases, but those are not recommended to use anymore due to security reasons)
-  * Any Windows-based file manager that supports the Windows Standard "Send To"-API. Tested examples:
-    * Microsoft Windows Explorer or
-    * [Double Commander](https://sourceforge.net/projects/doublecmd/) (GPLv2), [Explorer++](https://github.com/derceg/explorerplusplus) (GPLv3), [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) (MIT) or
-    * Altap Salamander (Freeware), FileVoyager (Freeware), FreeCommander (Freeware), Multi Commander (Freeware), Q-Dir (Freeware) or
-    * Directory Opus (commercial), EF Commander (commercial), SpeedCommander (commercial), xplorer² (commercial), XYplorer (commercial)
-  * Processor with x64 chip set
-  * ~128 MiB free RAM
-  * ~128 MiB free disk space
+  * Operating System
+    * Microsoft Windows 10 or 11
+  * File Manager
+    * Any Microsoft Windows-based file manager that supports the Microsoft Windows Standard "Send To"-API. The following compatible file managers have been tested successfully:
+      * Free Open Source Software
+        * [Double Commander](https://sourceforge.net/projects/doublecmd/) (GPLv2), [Explorer++](https://github.com/derceg/explorerplusplus) (GPLv3), [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) (MIT)
+      * Freeware
+        * Altap Salamander, FileVoyager, FreeCommander, Multi Commander, Q-Dir
+      * Commercial software
+        * Microsoft Windows Explorer
+        * Directory Opus, EF Commander, SpeedCommander, xplorer², XYplorer
+  * Hardware
+    * Processor with x64 chip set
+    * ~128 MiB free RAM
+    * ~128 MiB free disk space
 
 ## Download
 
@@ -23,11 +29,20 @@ You also find official hashes in the release notes.
 
 ## Installation
 
-Just extract the .zip file and double click on the executable called `Jacksum Windows Explorer Integration.exe`.
+Just extract the .zip file and double-click on the executable called `Jacksum Windows Explorer Integration.exe`.
 Allow Microsoft Defender SmartScreen to start the app. Before you do that you should verify hashes to make sure you have obtained the executable from a reliable source.
+
+The installer installs the JDK 17, Jacksum, and HashGarten to the user's home directory under the folder "Jacksum Windows Explorer Integration". The environment variable called
+JACKSUM_HOME is set with the value of the installation folder, and it is added to the user's PATH, so you also launch Jacksum just by typing `jacksum` if you want to.
+
+You can launch the installer as often as you want.
+
+After successful installation a dialog box informs you what have been done.
 
 <img src="https://raw.githubusercontent.com/jonelo/jacksum-fbi-windows/main/docs/images/Jacksum_Windows_Explorer_Integration_2.0.0.png" alt="Jacksum Windows Explorer Integration Installation" style="vertical-align:top;margin:10px 10px" />
 
+In the "Jacksum Windows Explorer integration" folder you also find an uninstaller.exe which removes
+Jacksum entirely from your disk again.
 
 ## Use it
 
@@ -50,7 +65,8 @@ The installer called sendto.nsi is written in NSIS. You need the NSIS compiler t
 
 ### Required binaries
 
-- HashGarten - https://github.com/jonelo/HashGarten
 - Jacksum - https://github.com/jonelo/jacksum
+- HashGarten - https://github.com/jonelo/HashGarten
 - FlatLaF - https://github.com/JFormDesigner/FlatLaf
 - OpenJDK Runtime 11+ - https://adoptium.net
+- NSIS EnVar plug-in - https://nsis.sourceforge.io/EnVar_plug-in 

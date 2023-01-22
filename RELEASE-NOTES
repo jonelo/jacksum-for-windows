@@ -1,3 +1,8 @@
+Jacksum FBI for Windows 2.3.0 - Jan 22, 2023
+- added variable JACKSUM_HOME to the user's environment, and
+  added "%JACKSUM_HOME%" to the PATH environment variable in order to call jacksum also from the command line
+- bundles HashGarten 0.12.0, Jacksum 3.5.0, FlatLaF 3.0, and OpenJDK Runtime 17.0.6 (from adoptium.net)
+
 Jacksum FBI for Windows 2.2.0 - Jan 10, 2023
 - bundles HashGarten 0.12.0, Jacksum 3.5.0, FlatLaF 3.0, and OpenJDK Runtime 17.0.5 (from adoptium.net)
 

@@ -1,20 +1,23 @@
 ﻿Unicode True
-!define VERSION "2.2.0"
+!define VERSION "2.3.0"
 !define JACKSUM_VERSION "3.5.0"
 !define HASHGARTEN_VERSION "0.12.0"
 !define FLATLAF_VERSION "3.0"
 !define URL "https://jacksum.net"
-!define APPNAME "Jacksum ${JACKSUM_VERSION} Windows Explorer Integration ${VERSION}"
+!define APPNAME "Jacksum ${JACKSUM_VERSION} Explorer Integration ${VERSION}"
 !addplugindir .
 !include "x64.nsh"
 
-
 RequestExecutionLevel user
+ShowInstDetails hide
+BrandingText "${URL}"
+#SetDetailsPrint none
+
 Icon "jacksum-sendto.ico"
 Name "Jacksum Windows Explorer Integration"
 Caption "${APPNAME}"
 OutFile "Jacksum Windows Explorer Integration.exe"
-SilentInstall silent
+#SilentInstall silent
 #SilentUnInstall silent
 XPStyle on
 
@@ -53,8 +56,8 @@ LangString CmdSelect ${LANG_GERMAN}       'Berechne Hashwerte'
 LangString CheckIntegrity ${LANG_ENGLISH} 'Check the data integrity'
 LangString CheckIntegrity ${LANG_GERMAN}  'Überprüfe die Datenintegrität'
 
- LangString AllAlgorithms ${LANG_ENGLISH} 'All algorithms'
- LangString AllAlgorithms ${LANG_GERMAN}  'Alle Algorithmen'
+LangString AllAlgorithms ${LANG_ENGLISH}  'All algorithms'
+LangString AllAlgorithms ${LANG_GERMAN}   'Alle Algorithmen'
 
 LangString Customized ${LANG_ENGLISH}     'Customized output'
 LangString Customized ${LANG_GERMAN}      'Benutzerdefinierte Ausgabe'
@@ -68,20 +71,20 @@ LangString OpenSendTo ${LANG_GERMAN}      'Öffne das Verzeichnis "Senden-an"'
 LangString Help ${LANG_ENGLISH}           'Help'
 LangString Help ${LANG_GERMAN}            'Hilfe'
 
- 
+
 Section
-  
+
   StrCpy $R2 ""
   Call GetParameters
   Pop $R2
-  
+
   ClearErrors
 
   ReadRegStr $R0 HKLM \
   "SOFTWARE\Microsoft\Windows NT\CurrentVersion" CurrentVersion
   IfErrors 0 winnt
   MessageBox MB_ICONINFORMATION|MB_OK 'Explorer Integration not possible on this Windows release' IDOK +1
-  Quit  
+  Quit
   winnt:
 
   ClearErrors
@@ -101,7 +104,7 @@ Section
   Push all # replace all occurrences
   Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum.bat"
   Call AdvReplaceInFile
-  
+
   Push @JACKSUM_VERSION@   # text to be replaced
   Push "${JACKSUM_VERSION}"  # replace with
   Push all # replace all occurrences
@@ -125,7 +128,7 @@ Section
   Push all # replace all occurrences
   Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum-sendto.bat"
     Call AdvReplaceInFile
-    
+
   Push @JAVAW@   # text to be replaced
   Push "$PROFILE\Jacksum Windows Explorer Integration\jre\bin\javaw.exe"  # replace with
   Push all # replace all occurrences
@@ -148,7 +151,7 @@ Section
     Call AdvReplaceInFile
 
   # remove the properties file because the old one is incompatible
-  Delete $PROFILE\.HashGarten.properties  
+  Delete $PROFILE\.HashGarten.properties
 
   # write files to the SendTo directory
   Delete $SENDTO\Jacksum*
@@ -156,15 +159,12 @@ Section
 
   # create shortcuts
   # use the following batch script in order to get the following lines:
-  # 
+  #
   # #!/bin/bash
   # for ALGO in $(jacksum -a all --list)
   # do
   #   printf "  CreateShortCut \"\$SENDTO\\Jacksum - %s.lnk\" \"\$OUTDIR\\jacksum-sendto.bat\" \"%-16s\" \"\$OUTDIR\\jacksum-sendto.ico\" 0 SW_SHOWMINIMIZED\n" "$ALGO" "$ALGO"
   # done
-  
-  # --start generated--
-  # --end generated--
 
   CreateShortCut "$SENDTO\Jacksum - 1) $(CmdSelect).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_gui        " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
   CreateShortCut "$SENDTO\Jacksum - 2) $(CheckIntegrity).lnk" "$OUTDIR\jacksum-sendto.bat" "cmd_check      " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
@@ -172,17 +172,52 @@ Section
   CreateShortCut "$SENDTO\Jacksum - 4) $(EditBatch).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_edit       " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
   CreateShortCut "$SENDTO\Jacksum - 5) $(Help).lnk"           "$OUTDIR\jacksum-sendto.bat" "cmd_help       " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
 
+  # Environment variable management in user land
+  EnVar::SetHKCU
+  DetailPrint "EnVar::SetHKCU"
+
+  # Create environment variable JACKSUM_HOME
+  # Check if the 'JACKSUM_HOME' variable exists in HKCU
+  EnVar::Check "JACKSUM_HOME" "NULL"
+  Pop $0
+  DetailPrint "EnVar::Check returned=|$0|"
+  StrCmp $0 0 0 nohome
+  DetailPrint "The environment variable JACKSUM_HOME already exists. I remove it."
+  EnVar::Delete "JACKSUM_HOME"
+  Pop $0
+  DetailPrint "EnVar::Delete returned=|$0|"
+  nohome:
+  DetailPrint "The environment variable JACKSUM_HOME is not there. I add it."
+  EnVar::AddValue "JACKSUM_HOME" "$OUTDIR"
+  Pop $0
+  DetailPrint "EnVar::AddValue returned=|$0|"
+
+  # Add %JACKSUM_HOME% to the PATH
+  # Check if the 'PATH' variable exists in EnVar::SetHKCU
+  EnVar::Check "PATH" "%JACKSUM_HOME%"
+  Pop $0
+  #DetailPrint "EnVar::Check returned=|$0|"
+  StrCmp $0 0 0 nopath
+  DetailPrint "The value %JACKSUM_HOME% in the environment variable PATH is already there. Nothing to do."
+  Goto endpath
+  nopath:
+  DetailPrint "The value %JACKSUM_HOME% in the environment variable PATH is not there. I add it."
+  EnVar::AddValue "PATH" "%JACKSUM_HOME%"
+  Pop $0
+  #DetailPrint "EnVar::AddValue returned=|$0|"
+  endpath:
+
   WriteUninstaller $OUTDIR\uninstaller.exe
-  
+  # DetailPrint $(Success)
   MessageBox MB_ICONINFORMATION|MB_OK|MB_SETFOREGROUND $(Success) IDOK +1
-  Quit
+  # Quit
 
 SectionEnd
 
 # Prevent Multiple Instances
 Function .onInit
   System::Call "kernel32::CreateMutexA(i 0, i 0, t 'SendToJacksum') i .r1 ?e"
-  Pop $R0 
+  Pop $R0
   StrCmp $R0 0 +2
   Abort
 FunctionEnd
@@ -250,47 +285,47 @@ Function AdvReplaceInFile
          IfErrors exit
          StrCpy $5 0
          StrCpy $7 $R2
- 
+
         loop_filter:
          IntOp $5 $5 - 1
          StrCpy $6 $7 $R3 $5 ;search
          StrCmp $6 "" file_write2
          StrCmp $6 $4 0 loop_filter
- 
+
          StrCpy $8 $7 $5 ;left part
          IntOp $6 $5 + $R3
          StrCpy $9 $7 "" $6 ;right part
          StrCpy $7 $8$3$9 ;re-join
- 
+
          IntOp $R4 $R4 + 1
          StrCmp $2 all file_write1
          StrCmp $R4 $2 0 file_write2
          IntOp $R4 $R4 - 1
- 
+
          IntOp $R5 $R5 + 1
          StrCmp $1 all file_write1
          StrCmp $R5 $1 0 file_write1
          IntOp $R5 $R5 - 1
          Goto file_write2
- 
+
         file_write1:
          FileWrite $R0 $7 ;write modified line
          Goto loop_read
- 
+
         file_write2:
          FileWrite $R0 $R2 ;write unmodified line
          Goto loop_read
- 
+
         exit:
          FileClose $R0
          FileClose $R1
- 
+
          SetDetailsPrint none
          Delete $0
          Rename $R6 $0
          Delete $R6
          SetDetailsPrint both
- 
+
          Pop $R6
          Pop $R5
          Pop $R4
@@ -315,6 +350,17 @@ Section "Uninstall"
   Delete $SENDTO\Jacksum*
   RMdir /r "$PROFILE\Jacksum Windows Explorer Integration"
   #Delete $INSTDIR\uninstaller.exe ; delete self
+
+  # Delete the JACKSUM_HOME value
+  EnVar::Delete "JACKSUM_HOME"
+  Pop $0
+  DetailPrint "EnVar::Delete returned=|$0|"
+
+  # Delete %JACKSUM_HOME% from PATH
+  EnVar::DeleteValue "PATH" "%JACKSUM_HOME%"
+  Pop $0
+  DetailPrint "EnVar::DeleteValue returned=|$0|"
+
   #MessageBox MB_ICONINFORMATION|MB_OK|MB_SETFOREGROUND $(Uninstall) IDOK +1
   #Quit
 SectionEnd
