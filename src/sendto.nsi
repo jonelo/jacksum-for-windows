@@ -1,8 +1,8 @@
 ﻿Unicode True
-!define VERSION "2.3.0"
-!define JACKSUM_VERSION "3.5.0"
-!define HASHGARTEN_VERSION "0.12.0"
-!define FLATLAF_VERSION "3.0"
+!define VERSION "2.4.0"
+!define JACKSUM_VERSION "3.6.0"
+!define HASHGARTEN_VERSION "0.13.0"
+!define FLATLAF_VERSION "3.1"
 !define URL "https://jacksum.net"
 !define APPNAME "Jacksum ${JACKSUM_VERSION} Explorer Integration ${VERSION}"
 !addplugindir .
