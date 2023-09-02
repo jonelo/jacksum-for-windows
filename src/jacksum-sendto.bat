@@ -17,20 +17,30 @@ rem ---------------------
 :gui
 copy nul %OUTPUT%
 copy nul %CHECK_FILE%
-call %JAVAW% -jar %HASHGARTEN_JAR% --header -O %CHECK_FILE% -U %ERROR_LOG% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
+call %JAVAW% -jar %HASHGARTEN_JAR% --header -O relative -U %ERROR_LOG% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
 set ReturnCode=%ERRORLEVEL%
 if "%ReturnCode%"=="2" goto cancel
 if "%ReturnCode%"=="1" goto error
-copy /y /b %CHECK_FILE% + %ERROR_LOG% %OUTPUT%
-goto view
 
+rem Generate an output that contains both stdout and stderr in a file for the viewer
+rem CHECK_FILE contains the output file name that the user has been specified at the GUI
+for /F "usebackq delims=" %%A in (`findstr gui.output %USERPROFILE%\.HashGarten.properties`) do (
+  set CHECK_FILE=%%A
+  shift
+)
+rem We need to strip the key called gui.output= and undo any escapes done by Java's properties API
+set CHECK_FILE=%CHECK_FILE:~11%
+set CHECK_FILE=%CHECK_FILE:\\=\%
+set CHECK_FILE=%CHECK_FILE:\:=:%
+copy /y /b "%CHECK_FILE%" + %ERROR_LOG% %OUTPUT%
+goto view
 
 rem ---------------
 rem check integrity
 rem ---------------
 :check
 copy nul %OUTPUT%
-call %JAVAW% -jar %HASHGARTEN_JAR% --header -c %CHECK_FILE% -O %OUTPUT% -U %OUTPUT% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
+call %JAVAW% -jar %HASHGARTEN_JAR% --header -c relative -O %OUTPUT% -U %OUTPUT% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
 set ReturnCode=%ERRORLEVEL%
 if "%ReturnCode%"=="2" goto cancel
 if "%ReturnCode%"=="1" goto error

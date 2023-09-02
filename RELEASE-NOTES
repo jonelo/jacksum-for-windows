@@ -1,3 +1,8 @@
+Jacksum FBI for Windows 2.5.0 - September 2, 2023
+- bundles HashGarten 0.14.0, Jacksum 3.7.0, FlatLaF 3.2, and OpenJDK Runtime 17.0.8.1 (from adoptium.net)
+- implemented feature request #2 partly
+- Installer made with NSIS 3.09
+
 Jacksum FBI for Windows 2.4.0 - Apr 16, 2023
 - bundles HashGarten 0.13.0, Jacksum 3.6.0, FlatLaF 3.1, and OpenJDK Runtime 17.0.6 (from adoptium.net)
 
