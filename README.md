@@ -2,7 +2,7 @@
 
 # Jacksum FBI for Windows
 
-The Jacksum File Browser Integration for Microsoft Windows allows you to access features of [Jacksum](https://github.com/jonelo/jacksum) through [HashGarten](https://github.com/jonelo/HashGarten) from the Send To menu at the Microsoft Windows Explorer.
+The Jacksum File Browser Integration for Microsoft Windows allows you to access features of [Jacksum](https://github.com/jonelo/jacksum) through [HashGarten](https://github.com/jonelo/HashGarten) from the Send To menu at the Microsoft File Explorer.
 
 ## Requirements
 
@@ -15,7 +15,7 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
       * Freeware
         * Altap Salamander, FileVoyager, FreeCommander, Multi Commander, Q-Dir
       * Commercial software
-        * Microsoft Windows Explorer
+        * Microsoft File Explorer
         * Directory Opus, EF Commander, SpeedCommander, xplorer², XYplorer
   * Hardware
     * Processor with x64 chip set
@@ -39,7 +39,7 @@ You can launch the installer as often as you want.
 
 After successful installation a dialog box informs you what have been done.
 
-<img src="https://raw.githubusercontent.com/jonelo/jacksum-fbi-windows/main/docs/images/Jacksum_Windows_Explorer_Integration_2.0.0.png" alt="Jacksum Windows Explorer Integration Installation" style="vertical-align:top;margin:10px 10px" />
+<img src="https://raw.githubusercontent.com/jonelo/jacksum-fbi-windows/main/docs/images/Jacksum_Windows_Explorer_Integration_2.0.0.png" alt="Jacksum File Explorer Integration Installation" style="vertical-align:top;margin:10px 10px" />
 
 In the "Jacksum Windows Explorer integration" folder you also find an uninstaller.exe which removes
 Jacksum entirely from your disk again.
@@ -53,7 +53,7 @@ After a menu item has been selected, [HashGarten](https://github.com/jonelo/Hash
 A video is available at https://www.youtube.com/watch?v=aLE6y7Osjac
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=aLE6y7Osjac" target="_blank"><img src="http://img.youtube.com/vi/aLE6y7Osjac/0.jpg" 
-alt="Jacksum and HashGarten integrated at the Windows Explorer" width="240" height="180" border="10" /></a>
+alt="Jacksum and HashGarten integrated at the Windows File Explorer" width="240" height="180" border="10" /></a>
 
 ## Customization
 
