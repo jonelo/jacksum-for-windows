@@ -20,18 +20,21 @@ Any file manager that supports the Microsoft Windows Standard "Send To"-API is s
 | File Manager                                                      | License     | API         | Comment                                                                     |
 |-------------------------------------------------------------------|-------------|-------------|-----------------------------------------------------------------------------|
 | Altap Salamander                                                  | proprietary | Send To     | Freeware                                                                    |
-| EF Commander                                                      | proprietary | Send To     | Commercial Software                                                         |
-| [Explorer++](https://github.com/derceg/explorerplusplus)          | GPLv3       | Send To     | Free Open Source Software                                                   |
 | Directory Opus                                                    | proprietary | Send To     | Commercial Software                                                         |
 | [Double Commander](https://sourceforge.net/projects/doublecmd/)   | GPLv2       | Send To     | Free Open Source Software                                                   |
+| EF Commander                                                      | proprietary | Send To     | Commercial Software                                                         |
+| [Explorer++](https://github.com/derceg/explorerplusplus)          | GPLv3       | Send To     | Free Open Source Software                                                   |
 | File Explorer                                                     | proprietary | Send To     | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
 | FileVoyager                                                       | proprietary | Send To     | Freeware                                                                    |
 | FreeCommander                                                     | proprietary | Send To     | Freeware                                                                    |
+| IdosWin Pro                                                       | proprietary | Send To     | Freeware
 | [muCommander](https://github.com/mucommander/mucommander)         | GPLv3       | proprietary | supported via commands.xml, API limit: can pass one file or one dir only to HashGarten, see [issue #1](https://github.com/jonelo/jacksum-fbi-windows/issues)  |
 | Multi Commander                                                   | proprietary | Send To     | Freeware                                                                    |
+| OneCommander                                                      | proprietary | Send To     | Freeware, "Send To" for files only, not for directories                     |
+| Q-Dir                                                             | proprietary | Send To     | Freeware                                                                    |
 | SpeedCommander                                                    | proprietary | Send To     | Commercial Software                                                         |
 | [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) | MIT         | Send To     | Free Open Source Software                                                   |
-| Q-Dir                                                             | proprietary | Send To     | Freeware                                                                    |
+| Universal Explorer                                                | proprietary | Send To     | Commercial Software                                                         |
 | xplorer²                                                          | proprietary | Send To     | Commercial Software                                                         |
 | XYplorer                                                          | proprietary | Send To     | Commercial Software                                                         |
 
