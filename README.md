@@ -35,6 +35,7 @@ Any file manager that supports the Microsoft Windows Standard "Send To"-API is s
 | xplorer²                                                          | proprietary | Send To     | Commercial Software                                                         |
 | XYplorer                                                          | proprietary | Send To     | Commercial Software                                                         |
 
+Note: if your preferred file manager is not listed above, and it does not support "Send to", chances are high that your file manager supports at least drag & drop, so you could use drag & drop to transfer file/directory-paths from your file manager to the HashGarten GUI where you can process further, e. g. calculate hashes from those file/directory-paths.
 
 ## Download
 
