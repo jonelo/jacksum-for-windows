@@ -27,7 +27,7 @@ Any file manager that supports the Microsoft Windows Standard "Send To"-API is s
 | File Explorer                                                     | proprietary | Send To     | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
 | FileVoyager                                                       | proprietary | Send To     | Freeware                                                                    |
 | FreeCommander                                                     | proprietary | Send To     | Freeware                                                                    |
-| [muCommander](https://github.com/mucommander/mucommander)         | GPLv3       | proprietary | supported via commands.xml, API limit: can pass one file or one dir only to HashGarten  |
+| [muCommander](https://github.com/mucommander/mucommander)         | GPLv3       | proprietary | supported via commands.xml, API limit: can pass one file or one dir only to HashGarten, see [issue #1](https://github.com/jonelo/jacksum-fbi-windows/issues)  |
 | Multi Commander                                                   | proprietary | Send To     | Freeware                                                                    |
 | SpeedCommander                                                    | proprietary | Send To     | Commercial Software                                                         |
 | [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) | MIT         | Send To     | Free Open Source Software                                                   |
