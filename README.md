@@ -6,21 +6,35 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
 
 ## Requirements
 
-  * Operating System
-    * Microsoft Windows 10 or 11
-  * File Manager
-    * Any Microsoft Windows-based file manager that supports the Microsoft Windows Standard "Send To"-API. The following compatible file managers have been tested successfully:
-      * Free Open Source Software
-        * [Double Commander](https://sourceforge.net/projects/doublecmd/) (GPLv2), [Explorer++](https://github.com/derceg/explorerplusplus) (GPLv3), [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) (MIT)
-      * Freeware
-        * Altap Salamander, FileVoyager, FreeCommander, Multi Commander, Q-Dir
-      * Commercial software
-        * Microsoft File Explorer
-        * Directory Opus, EF Commander, SpeedCommander, xplorer², XYplorer
+  * Microsoft Windows 10 or 11
+  * At least one of the supported file browsers below
   * Hardware
     * Processor with x64 chip set
-    * ~128 MiB free RAM
-    * ~128 MiB free disk space
+    * 128 MiB free RAM
+    * 128 MiB free disk space
+   
+## Supported File Browsers
+
+Any file manager that supports the Microsoft Windows Standard "Send To"-API is supported by this integration program. In addition to that, file managers are supported that support a way to pass files or directories to external scripts or programs - which allows them to access the Send To functions indirectly. The following file managers have been tested successfully.
+
+| File Manager                                                      | License     | API         | Comment                                                                     |
+|-------------------------------------------------------------------|-------------|-------------|-----------------------------------------------------------------------------|
+| Altap Salamander                                                  | proprietary | Send To     | Freeware                                                                    |
+| EF Commander                                                      | proprietary | Send To     | Commercial Software                                                         |
+| [Explorer++](https://github.com/derceg/explorerplusplus)          | GPLv3       | Send To     | Free Open Source Software                                                   |
+| Directory Opus                                                    | proprietary | Send To     | Commercial Software                                                         |
+| [Double Commander](https://sourceforge.net/projects/doublecmd/)   | GPLv2       | Send To     | Free Open Source Software                                                   |
+| File Explorer                                                     | proprietary | Send To     | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
+| FileVoyager                                                       | proprietary | Send To     | Freeware                                                                    |
+| FreeCommander                                                     | proprietary | Send To     | Freeware                                                                    |
+| [muCommander](https://github.com/mucommander/mucommander)         | GPLv3       | proprietary | supported via commands.xml, API limit: can pass one file or one dir only to HashGarten  |
+| Multi Commander                                                   | proprietary | Send To     | Freeware                                                                    |
+| SpeedCommander                                                    | proprietary | Send To     | Commercial Software                                                         |
+| [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) | MIT         | Send To     | Free Open Source Software                                                   |
+| Q-Dir                                                             | proprietary | Send To     | Freeware                                                                    |
+| xplorer²                                                          | proprietary | Send To     | Commercial Software                                                         |
+| XYplorer                                                          | proprietary | Send To     | Commercial Software                                                         |
+
 
 ## Download
 
