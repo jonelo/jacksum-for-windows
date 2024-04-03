@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Jacksum muCommander integration/configuration file
+
+  If you want to have HashGarten/Jacksum (https://jacksum.net)
+  integrated in muCommander (https://www.mucommander.com),
+  copy this file (commands.xml) to the .mucommander directory,
+  see also https://github.com/mucommander/mucommander/wiki/Preference-Files#locating-the-customisation-files
+-->
+<commands>
+  <command alias="Jacksum - 1) Calculate hash values"    value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 1)\ Calculate\ hash\ values.lnk&quot; &quot;$f&quot;" />
+  <command alias="Jacksum - 2) Check the data integrity" value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 2)\ Check\ the\ data\ integrity&quot; &quot;$f&quot;" />
+  <command alias="Jacksum - 3) Customized output"        value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 3)\ Customized\ output.lnk&quot; &quot;$f&quot;" />
+  <command alias="Jacksum - 4) Edit batch"               value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 4)\ Edit\ batch.lnk&quot;" />
+</commands>
