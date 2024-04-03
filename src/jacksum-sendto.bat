@@ -1,7 +1,7 @@
 @echo off
 rem ===============================================
 rem
-rem Jacksum Windows Explorer Integration
+rem Jacksum Windows File Explorer Integration
 rem
 rem powered by Jacksum, <https://jacksum.net>,
 rem Copyright (c) 2006-2023 Johann N. Loefflmann,
@@ -15,43 +15,27 @@ rem ---------------------
 rem calculate hash values
 rem ---------------------
 :gui
-copy nul %OUTPUT%
-copy nul %CHECK_FILE%
 call %JAVAW% -jar %HASHGARTEN_JAR% --header -O relative -U %ERROR_LOG% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
 set ReturnCode=%ERRORLEVEL%
 if "%ReturnCode%"=="2" goto cancel
 if "%ReturnCode%"=="1" goto error
-
-rem Generate an output that contains both stdout and stderr in a file for the viewer
-rem CHECK_FILE contains the output file name that the user has been specified at the GUI
-for /F "usebackq delims=" %%A in (`findstr gui.output %USERPROFILE%\.HashGarten.properties`) do (
-  set CHECK_FILE=%%A
-  shift
-)
-rem We need to strip the key called gui.output= and undo any escapes done by Java's properties API
-set CHECK_FILE=%CHECK_FILE:~11%
-set CHECK_FILE=%CHECK_FILE:\\=\%
-set CHECK_FILE=%CHECK_FILE:\:=:%
-copy /y /b "%CHECK_FILE%" + %ERROR_LOG% %OUTPUT%
-goto view
+goto end
 
 rem ---------------
 rem check integrity
 rem ---------------
 :check
-copy nul %OUTPUT%
 call %JAVAW% -jar %HASHGARTEN_JAR% --header -c relative -O %OUTPUT% -U %OUTPUT% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
 set ReturnCode=%ERRORLEVEL%
 if "%ReturnCode%"=="2" goto cancel
 if "%ReturnCode%"=="1" goto error
-goto view
+goto end
 
 
 rem -----------------
 rem customized output
 rem -----------------
 :custom
-copy nul %OUTPUT%
 set ALGO=md5+sha1+ripemd160+tiger+^
 sha256+sha512/256+sha3-256+shake128+sm3+streebog256+kupyna-256+lsh-256-256+blake3+k12+keccak256+^
 sha512+sha3-512+shake256+streebog512+kupyna-512+lsh-512-512+blake2b-512+keccak512+m14+skein-512-512+whirlpool
@@ -226,7 +210,7 @@ rem -----
 rem Usage
 rem -----
 :usage
-echo This batch handles the Windows Explorer Integration for Jacksum.
+echo This batch handles the Windows File Explorer Integration for Jacksum.
 echo For more information go to %JACKSUM_URL%
 pause
 goto end

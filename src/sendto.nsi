@@ -1,52 +1,54 @@
 ﻿Unicode True
-!define VERSION "2.6.0"
+!define VERSION "2.7.0"
 !define JACKSUM_VERSION "3.7.0"
-!define HASHGARTEN_VERSION "0.15.0"
-!define FLATLAF_VERSION "3.4"
+!define HASHGARTEN_VERSION "0.16.0"
+!define FLATLAF_VERSION "3.4.1"
 !define URL "https://jacksum.net"
-!define APPNAME "Jacksum ${JACKSUM_VERSION} Explorer Integration ${VERSION}"
+!define APPNAME "Jacksum ${JACKSUM_VERSION} Windows File Explorer Integration ${VERSION}"
 !addplugindir .
 !include "x64.nsh"
 
+ 
 RequestExecutionLevel user
 ShowInstDetails hide
 BrandingText "${URL}"
 #SetDetailsPrint none
 
 Icon "jacksum-sendto.ico"
-Name "Jacksum Windows Explorer Integration"
+Name "Jacksum Windows File Explorer Integration"
 Caption "${APPNAME}"
-OutFile "Jacksum Windows Explorer Integration.exe"
+OutFile "Jacksum Windows File Explorer Integration.exe"
 #SilentInstall silent
 #SilentUnInstall silent
 XPStyle on
 
 # Default installation folder
-InstallDir "$PROFILE\Jacksum Windows Explorer Integration"
+InstallDir "$PROFILE\Jacksum Windows File Explorer Integration"
 
+# First is default
 LoadLanguageFile "${NSISDIR}\Contrib\Language files\English.nlf"
 LoadLanguageFile "${NSISDIR}\Contrib\Language files\German.nlf"
 
 LangString Success ${LANG_ENGLISH} \
   'The installation was successful.\
   $\n\
-  $\nDetails: \
+  $\n\
   Jacksum ${JACKSUM_VERSION}, HashGarten ${HASHGARTEN_VERSION} and an uninstaller have been stored to\
   $\n\
   $\n$OUTDIR\
   $\n\
-  $\nFrom the Windows Explorer "Send To" menu, you can call Jacksum and HashGarten \
+  $\nFrom the Windows File Explorer "Send To" menu, you can call Jacksum and HashGarten \
   in order to compute and verify hash values with Jacksum.'
 
 LangString Success ${LANG_GERMAN} \
   'Die Installation war erfolgreich.\
   $\n\
-  $\nDetails: \
+  $\n\
   Jacksum ${JACKSUM_VERSION}, HashGarten ${HASHGARTEN_VERSION} und ein Uninstaller wurden gespeichert nach\
   $\n\
   $\n$OUTDIR\
   $\n\
-  $\nAus dem "Senden an" Menü des Windows Explorers können Sie nun \
+  $\nAus dem "Senden an" Menü des Windows File Explorers können Sie nun \
   Jacksum und HashGarten aufrufen, um Hashwerte mit Jacksum zu berechnen und zu überprüfen.'
 
 
@@ -71,6 +73,27 @@ LangString OpenSendTo ${LANG_GERMAN}      'Öffne das Verzeichnis "Senden-an"'
 LangString Help ${LANG_ENGLISH}           'Help'
 LangString Help ${LANG_GERMAN}            'Hilfe'
 
+# Replace strings in a string
+!macro _StrRep output string old new
+  Push "${string}"
+  Push "${old}"
+  Push "${new}"
+  Call StrRep
+  Pop ${output}
+!macroend
+!define StrRep "!insertmacro _StrRep"
+
+# Replace strings in file
+!macro _ReplaceInFile2 FILE_TO_MODIFIED OLD_STR REPLACEMENT_STR FST_OCC NR_OCC
+  Push "${OLD_STR}" ;text to be replaced
+  Push "${REPLACEMENT_STR}" ;replace with
+  Push "${FST_OCC}" ; starts replacing onwards FST_OCC occurrences
+  Push "${NR_OCC}" ; replaces NR_OCC occurrences in all
+  Push "${FILE_TO_MODIFIED}" ; file to replace in
+  Call AdvReplaceInFile
+!macroend
+!define ReplaceInFile2 "!insertmacro _ReplaceInFile2" 
+
 
 Section
 
@@ -83,38 +106,24 @@ Section
   ReadRegStr $R0 HKLM \
   "SOFTWARE\Microsoft\Windows NT\CurrentVersion" CurrentVersion
   IfErrors 0 winnt
-  MessageBox MB_ICONINFORMATION|MB_OK 'Explorer Integration not possible on this Windows release' IDOK +1
+  MessageBox MB_ICONINFORMATION|MB_OK 'Windows File Explorer Integration is not possible on this Windows release' IDOK +1
   Quit
   winnt:
 
   ClearErrors
-  SetOutPath "$PROFILE\Jacksum Windows Explorer Integration"
+  SetOutPath "$INSTDIR"
+  
   File jacksum.bat
+  ${ReplaceInFile2} "$INSTDIR\jacksum.bat" @PATH@ "$INSTDIR" 1 all
+  ${ReplaceInFile2} "$INSTDIR\jacksum.bat" @JAVA@ "$INSTDIR\jre\bin\java.exe" 1 all
+  ${ReplaceInFile2} "$INSTDIR\jacksum.bat" @JACKSUM_VERSION@ "${JACKSUM_VERSION}" 1 all
 
-  Push @PATH@   # text to be replaced
-  Push "$PROFILE\Jacksum Windows Explorer Integration"  # replace with
-  Push all # replace all occurrences
-  Push all # replace all occurrences
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum.bat"
-  Call AdvReplaceInFile
-
-  Push @JAVA@   # text to be replaced
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jre\bin\java.exe"  # replace with
-  Push all # replace all occurrences
-  Push all # replace all occurrences
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum.bat"
-  Call AdvReplaceInFile
-
-  Push @JACKSUM_VERSION@   # text to be replaced
-  Push "${JACKSUM_VERSION}"  # replace with
-  Push all # replace all occurrences
-  Push all # replace all occurrences
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum.bat"
-    Call AdvReplaceInFile
-
-
-  SetOutPath "$PROFILE\Jacksum Windows Explorer Integration"
   File jacksum-sendto.bat
+  ${ReplaceInFile2} "$INSTDIR\jacksum-sendto.bat" @PATH@ "$INSTDIR" 1 all
+  ${ReplaceInFile2} "$INSTDIR\jacksum-sendto.bat" @JAVAW@ "$INSTDIR\jre\bin\javaw.exe" 1 all
+  ${ReplaceInFile2} "$INSTDIR\jacksum-sendto.bat" @JACKSUM_VERSION@ "${JACKSUM_VERSION}" 1 all
+  ${ReplaceInFile2} "$INSTDIR\jacksum-sendto.bat" @HASHGARTEN_VERSION@ "${HASHGARTEN_VERSION}" 1 all
+
   File jacksum-sendto.ico
   File jacksum-${JACKSUM_VERSION}.jar
   File HashGarten-${HASHGARTEN_VERSION}.jar
@@ -122,33 +131,17 @@ Section
   File license.txt
   File /r jre
 
-  Push @PATH@   # text to be replaced
-  Push "$PROFILE\Jacksum Windows Explorer Integration"  # replace with
-  Push all # replace all occurrences
-  Push all # replace all occurrences
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum-sendto.bat"
-    Call AdvReplaceInFile
-
-  Push @JAVAW@   # text to be replaced
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jre\bin\javaw.exe"  # replace with
-  Push all # replace all occurrences
-  Push all # replace all occurrences
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum-sendto.bat"
-    Call AdvReplaceInFile
-
-  Push @JACKSUM_VERSION@   # text to be replaced
-  Push "${JACKSUM_VERSION}"  # replace with
-  Push all # replace all occurrences
-  Push all # replace all occurrences
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum-sendto.bat"
-    Call AdvReplaceInFile
-
-  Push @HASHGARTEN_VERSION@   # text to be replaced
-  Push "${HASHGARTEN_VERSION}"  # replace with
-  Push all # replace all occurrences
-  Push all # replace all occurrences
-  Push "$PROFILE\Jacksum Windows Explorer Integration\jacksum-sendto.bat"
-    Call AdvReplaceInFile
+  # a configuration file for integration in muCommander
+  StrCmp $LANGUAGE ${LANG_GERMAN} 0 notGerman  
+  File /oname=commands.xml commands.de.xml
+  Goto endLang
+  notGerman:
+  File /oname=commands.xml commands.en.xml
+  endLang:
+  # Tweaks for the muCommander commands.xml file
+  ${StrRep} '$0' "$SENDTO" '\' '\\'
+  ${StrRep} '$1' "$0" ' ' '\ '
+  ${ReplaceInFile2} "$INSTDIR\commands.xml" @SENDTO@ '$1' 1 all  
 
   # remove the properties file because the old one is incompatible
   Delete $PROFILE\.HashGarten.properties
@@ -157,20 +150,12 @@ Section
   Delete $SENDTO\Jacksum*
   RMdir /r $SENDTO\Jacksum
 
-  # create shortcuts
-  # use the following batch script in order to get the following lines:
-  #
-  # #!/bin/bash
-  # for ALGO in $(jacksum -a all --list)
-  # do
-  #   printf "  CreateShortCut \"\$SENDTO\\Jacksum - %s.lnk\" \"\$OUTDIR\\jacksum-sendto.bat\" \"%-16s\" \"\$OUTDIR\\jacksum-sendto.ico\" 0 SW_SHOWMINIMIZED\n" "$ALGO" "$ALGO"
-  # done
-
   CreateShortCut "$SENDTO\Jacksum - 1) $(CmdSelect).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_gui        " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
   CreateShortCut "$SENDTO\Jacksum - 2) $(CheckIntegrity).lnk" "$OUTDIR\jacksum-sendto.bat" "cmd_check      " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
   CreateShortCut "$SENDTO\Jacksum - 3) $(Customized).lnk"     "$OUTDIR\jacksum-sendto.bat" "cmd_custom     " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
   CreateShortCut "$SENDTO\Jacksum - 4) $(EditBatch).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_edit       " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
-  CreateShortCut "$SENDTO\Jacksum - 5) $(Help).lnk"           "$OUTDIR\jacksum-sendto.bat" "cmd_help       " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
+  # Help is now accessible from the GUI
+  # CreateShortCut "$SENDTO\Jacksum - 5) $(Help).lnk"           "$OUTDIR\jacksum-sendto.bat" "cmd_help       " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
 
   # Environment variable management in user land
   EnVar::SetHKCU
@@ -214,6 +199,7 @@ Section
 
 SectionEnd
 
+
 # Prevent Multiple Instances
 Function .onInit
   System::Call "kernel32::CreateMutexA(i 0, i 0, t 'SendToJacksum') i .r1 ?e"
@@ -221,6 +207,7 @@ Function .onInit
   StrCmp $R0 0 +2
   Abort
 FunctionEnd
+
 
 Function GetParameters
   Push $R0
@@ -247,108 +234,169 @@ Function GetParameters
   Exch $R0
 FunctionEnd
 
-Function AdvReplaceInFile
-         Exch $0 ;file to replace in
-         Exch
-         Exch $1 ;number to replace after
-         Exch
-         Exch 2
-         Exch $2 ;replace and onwards
-         Exch 2
-         Exch 3
-         Exch $3 ;replace with
-         Exch 3
-         Exch 4
-         Exch $4 ;to replace
-         Exch 4
-         Push $5 ;minus count
-         Push $6 ;universal
-         Push $7 ;end string
-         Push $8 ;left string
-         Push $9 ;right string
-         Push $R0 ;file1
-         Push $R1 ;file2
-         Push $R2 ;read
-         Push $R3 ;universal
-         Push $R4 ;count (onwards)
-         Push $R5 ;count (after)
-         Push $R6 ;temp file name
-         GetTempFileName $R6
-         FileOpen $R1 $0 r ;file to search in
-         FileOpen $R0 $R6 w ;temp file
-                  StrLen $R3 $4
-                  StrCpy $R4 -1
-                  StrCpy $R5 -1
-        loop_read:
-         ClearErrors
-         FileRead $R1 $R2 ;read line
-         IfErrors exit
-         StrCpy $5 0
-         StrCpy $7 $R2
 
-        loop_filter:
-         IntOp $5 $5 - 1
-         StrCpy $6 $7 $R3 $5 ;search
-         StrCmp $6 "" file_write2
-         StrCmp $6 $4 0 loop_filter
-
-         StrCpy $8 $7 $5 ;left part
-         IntOp $6 $5 + $R3
-         StrCpy $9 $7 "" $6 ;right part
-         StrCpy $7 $8$3$9 ;re-join
-
-         IntOp $R4 $R4 + 1
-         StrCmp $2 all file_write1
-         StrCmp $R4 $2 0 file_write2
-         IntOp $R4 $R4 - 1
-
-         IntOp $R5 $R5 + 1
-         StrCmp $1 all file_write1
-         StrCmp $R5 $1 0 file_write1
-         IntOp $R5 $R5 - 1
-         Goto file_write2
-
-        file_write1:
-         FileWrite $R0 $7 ;write modified line
-         Goto loop_read
-
-        file_write2:
-         FileWrite $R0 $R2 ;write unmodified line
-         Goto loop_read
-
-        exit:
-         FileClose $R0
-         FileClose $R1
-
-         SetDetailsPrint none
-         Delete $0
-         Rename $R6 $0
-         Delete $R6
-         SetDetailsPrint both
-
-         Pop $R6
-         Pop $R5
-         Pop $R4
-         Pop $R3
-         Pop $R2
-         Pop $R1
-         Pop $R0
-         Pop $9
-         Pop $8
-         Pop $7
-         Pop $6
-         Pop $5
-         Pop $4
-         Pop $3
-         Pop $2
-         Pop $1
-         Pop $0
+Function StrRep
+  Exch $R4 ; $R4 = Replacement String
+  Exch
+  Exch $R3 ; $R3 = String to replace (needle)
+  Exch 2
+  Exch $R1 ; $R1 = String to do replacement in (haystack)
+  Push $R2 ; Replaced haystack
+  Push $R5 ; Len (needle)
+  Push $R6 ; len (haystack)
+  Push $R7 ; Scratch reg
+  StrCpy $R2 ""
+  StrLen $R5 $R3
+  StrLen $R6 $R1
+loop:
+  StrCpy $R7 $R1 $R5
+  StrCmp $R7 $R3 found
+  StrCpy $R7 $R1 1 ; - optimization can be removed if U know len needle=1
+  StrCpy $R2 "$R2$R7"
+  StrCpy $R1 $R1 $R6 1
+  StrCmp $R1 "" done loop
+found:
+  StrCpy $R2 "$R2$R4"
+  StrCpy $R1 $R1 $R6 $R5
+  StrCmp $R1 "" done loop
+done:
+  StrCpy $R3 $R2
+  Pop $R7
+  Pop $R6
+  Pop $R5
+  Pop $R2
+  Pop $R1
+  Pop $R4
+  Exch $R3
 FunctionEnd
+
+
+Function AdvReplaceInFile
+  Exch $0 ; FILE_TO_MODIFIED file to replace in
+  Exch
+  Exch $1 ; the NR_OCC of OLD_STR occurrences to be replaced.
+  Exch
+  Exch 2
+  Exch $2 ; FST_OCC: the first occurrence to be replaced and onwards
+  Exch 2
+  Exch 3
+  Exch $3 ; REPLACEMENT_STR string to replace with
+  Exch 3
+  Exch 4
+  Exch $4 ; OLD_STR to be replaced
+  Exch 4
+  Push $5 ; incrementing counter
+  Push $6 ; a chunk of read line
+  Push $7 ; the read line altered or not
+  Push $8 ; left string
+  Push $9 ; right string or forster read line
+  Push $R0 ; temp file handle
+  Push $R1 ; FILE_TO_MODIFIED file handle
+  Push $R2 ; a line read
+  Push $R3 ; the length of OLD_STR
+  Push $R4 ; counts reaching of FST_OCC
+  Push $R5 ; counts reaching of NR_OCC
+  Push $R6 ; temp file name
+ 
+  GetTempFileName $R6
+ 
+  FileOpen $R1 $0 r 		; FILE_TO_MODIFIED file to search in
+  FileOpen $R0 $R6 w        ; temp file
+  StrLen $R3 $4             ; the length of OLD_STR
+  StrCpy $R4 0				; counter initialization
+  StrCpy $R5 -1             ; counter initialization
+ 
+loop_read:
+  ClearErrors
+  FileRead $R1 $R2 			; reading line
+  IfErrors exit				; when end of file has been reached
+ 
+  StrCpy $5 -1              ; cursor, start of read line chunk
+  StrLen $7 $R2             ; read line length
+  IntOp $5 $5 - $7          ; cursor initialization
+  StrCpy $7 $R2             ; $7 contains read line
+ 
+loop_filter:
+  IntOp $5 $5 + 1           ; cursor shifting
+  StrCmp $5 0 file_write    ; end of line has been reached
+  StrCpy $6 $7 $R3 $5       ; a chunk of read line of length OLD_STR 
+  StrCmp $6 $4 0 loop_filter ; continues to search OLD_STR if no match
+ 
+  StrCpy $8 $7 $5           ; left part 
+  IntOp $6 $5 + $R3
+  IntCmp $6 0 yes no        ; left part + OLD_STR == full line read ?						
+yes:
+  StrCpy $9 ""
+  Goto done
+no:
+  StrCpy $9 $7 "" $6        ; right part
+done:
+  StrCpy $9 $8$3$9          ; replacing OLD_STR by REPLACEMENT_STR in forster read line
+ 
+  IntOp $R4 $R4 + 1			; counter incrementation
+  ;MessageBox MB_OK|MB_ICONINFORMATION \
+  ;"count R4 = $R4, fst_occ = $2" 
+  StrCmp $2 all follow_up   ; exchange ok, then goes to search the next OLD_STR
+  IntCmp $R4 $2 follow_up   ; no exchange until FST_OCC has been reached,
+  Goto loop_filter          ; and then searching for the next OLD_STR
+ 
+follow_up:	
+  IntOp $R4 $R4 - 1			; now counter is to be stuck to FST_OCC
+ 
+  IntOp $R5 $R5 + 1			; counter incrementation
+  ; MessageBox MB_OK|MB_ICONINFORMATION \
+  ; "count R5 = $R5, nbr_occ = $1" 
+  StrCmp $1 all exchange_ok ; goes to exchange OLD_STR with REPLACEMENT_STR
+  IntCmp $R5 $1 finalize    ; proceeding exchange until NR_OCC has been reached														
+ 
+exchange_ok:
+  IntOp $5 $5 + $R3         ; updating cursor
+  StrCpy $7 $9				; updating read line with forster read line
+  Goto loop_filter          ; goes searching the same read line
+ 
+finalize:
+  IntOp $R5 $R5 - 1         ; now counter is to be stuck to NR_OCC
+ 
+file_write: 
+  FileWrite $R0 $7          ; writes altered or unaltered line 
+  Goto loop_read            ; reads the next line
+ 
+exit:
+  FileClose $R0
+  FileClose $R1
+ 
+  ; SetDetailsPrint none
+  Delete $0
+  Rename $R6 $0				; superseding FILE_TO_MODIFIED file with
+	                        ; temp file built with REPLACEMENT_STR 
+  ; Delete $R6
+  ; SetDetailsPrint lastused
+ 
+  Pop $R6
+  Pop $R5
+  Pop $R4
+  Pop $R3
+  Pop $R2
+  Pop $R1
+  Pop $R0
+  Pop $9
+  Pop $8
+  Pop $7
+  Pop $6
+  Pop $5
+  ; These values are stored in the stack in the reverse order they were pushed
+  Pop $0
+  Pop $1
+  Pop $2
+  Pop $3
+  Pop $4
+FunctionEnd
+
 
 Section "Uninstall"
   # RMdir /r $SENDTO\Jacksum
   Delete $SENDTO\Jacksum*
-  RMdir /r "$PROFILE\Jacksum Windows Explorer Integration"
+  RMdir /r "$PROFILE\Jacksum Windows File Explorer Integration"
   #Delete $INSTDIR\uninstaller.exe ; delete self
 
   # Delete the JACKSUM_HOME value
