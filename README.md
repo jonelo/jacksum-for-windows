@@ -24,7 +24,6 @@ Any file manager that supports the Microsoft Windows Standard "Send To"-API is s
 | [Double Commander](https://sourceforge.net/projects/doublecmd/)   | GPLv2       | Send To     | Free Open Source Software                                                   |
 | EF Commander                                                      | proprietary | Send To     | Commercial Software                                                         |
 | [Explorer++](https://github.com/derceg/explorerplusplus)          | GPLv3       | Send To     | Free Open Source Software                                                   |
-| File Explorer                                                     | proprietary | Send To     | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
 | FileVoyager                                                       | proprietary | Send To     | Freeware                                                                    |
 | FreeCommander                                                     | proprietary | Send To     | Freeware                                                                    |
 | IdosWin Pro                                                       | proprietary | Send To     | Freeware
@@ -35,6 +34,7 @@ Any file manager that supports the Microsoft Windows Standard "Send To"-API is s
 | SpeedCommander                                                    | proprietary | Send To     | Commercial Software                                                         |
 | [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) | MIT         | Send To     | Free Open Source Software                                                   |
 | Universal Explorer                                                | proprietary | Send To     | Commercial Software                                                         |
+| Windows File Explorer                                             | proprietary | Send To     | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
 | xplorer²                                                          | proprietary | Send To     | Commercial Software                                                         |
 | XYplorer                                                          | proprietary | Send To     | Commercial Software                                                         |
 
