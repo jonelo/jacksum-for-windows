@@ -15,7 +15,11 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
    
 ## Supported File Browsers
 
-Any file manager that supports the Microsoft Windows Standard "Send To"-API is supported by this integration program. In addition to that, file managers are supported that support a way to pass files or directories to external scripts or programs - which allows them to access the Send To functions indirectly. The following file managers have been tested successfully.
+Any file manager that supports the Microsoft Windows Standard **Send To**-API is supported by this integration program. In addition to that, file managers are supported that support a way to pass files or directories to external scripts or programs - which allows them to access Send To functions indirectly.
+
+If your preferred file manager is not listed below, or it does not support "Send to", chances are high that your file manager supports at least **drag & drop**, so you could use drag & drop to transfer file/directory-paths from your file manager to the HashGarten GUI where you can process data further, e. g. calculate hashes from file/directory-paths.
+
+The following file managers have been tested successfully:
 
 | File Manager                                                      | License     | API         | Comment                                                                     |
 |-------------------------------------------------------------------|-------------|-------------|-----------------------------------------------------------------------------|
@@ -38,7 +42,6 @@ Any file manager that supports the Microsoft Windows Standard "Send To"-API is s
 | xplorer²                                                          | proprietary | Send To     | Commercial Software                                                         |
 | XYplorer                                                          | proprietary | Send To     | Commercial Software                                                         |
 
-Note: if your preferred file manager is not listed above, and it does not support "Send to", chances are high that your file manager supports at least drag & drop, so you could use drag & drop to transfer file/directory-paths from your file manager to the HashGarten GUI where you can process further, e. g. calculate hashes from those file/directory-paths.
 
 ## Download
 
