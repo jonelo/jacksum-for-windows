@@ -68,9 +68,12 @@ Jacksum entirely from your disk again.
 
 ## Use it
 
+On Windows 11, select files and directories, hold down the shift key when you right-click with your mouse and select "Send to".
+On Windows 10, select files and directories, right click with your mouse and select "Send to".
+
 <img src="https://raw.githubusercontent.com/jonelo/jacksum-fbi-windows/main/docs/images/sendto-de.png" alt="Send to screenshot" style="vertical-align:top;margin:10px 10px" />
 
-After a menu item has been selected, [HashGarten](https://github.com/jonelo/HashGarten) resp. [Jacksum](https://github.com/jonelo/jacksum) take over.
+After a menu item has been selected fro the "Send to" menu, [HashGarten](https://github.com/jonelo/HashGarten) resp. [Jacksum](https://github.com/jonelo/jacksum) take over.
 
 A video is available at https://www.youtube.com/watch?v=aLE6y7Osjac
 
