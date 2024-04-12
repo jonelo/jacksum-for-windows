@@ -96,3 +96,7 @@ The installer called sendto.nsi is written in NSIS. You need the NSIS compiler t
 - FlatLaF - https://github.com/JFormDesigner/FlatLaf
 - OpenJDK Runtime 11+ - https://adoptium.net
 - NSIS EnVar plug-in - https://nsis.sourceforge.io/EnVar_plug-in 
+
+## Show your support
+
+Please ⭐️ this repository if this project helped you!
