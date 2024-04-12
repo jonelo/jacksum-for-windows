@@ -28,6 +28,7 @@ The following file managers have been tested successfully:
 | [Double Commander](https://sourceforge.net/projects/doublecmd/)   | GPLv2       | Send To     | Free Open Source Software                                                   |
 | EF Commander                                                      | proprietary | Send To     | Commercial Software                                                         |
 | [Explorer++](https://github.com/derceg/explorerplusplus)          | GPLv3       | Send To     | Free Open Source Software                                                   |
+| Explorer Commander                                                | proprietary | Send To     | Freeware                                                                    |
 | [Files](https://github.com/files-community/files/)                | MIT         | Send To     | Free Open Source Software                                                   |
 | FileVoyager                                                       | proprietary | Send To     | Freeware                                                                    |
 | FreeCommander                                                     | proprietary | Send To     | Freeware                                                                    |
