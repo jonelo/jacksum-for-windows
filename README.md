@@ -15,34 +15,33 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
    
 ## Supported File Browsers
 
-Any file manager that supports the Microsoft Windows Standard **Send To**-API is supported by this integration program. In addition to that, file managers are supported that support a way to pass files or directories to external scripts or programs - which allows them to access Send To functions indirectly.
+Any file manager that supports the Microsoft Windows Standard **Send To**-Interface is supported by this integration program. In addition to that, file managers are supported that support a way to pass files or directories to external scripts or programs - which allows them to perform similar functions "like Send To".
 
 If your preferred file manager is not listed below, or it does not support "Send to", chances are high that your file manager supports at least **drag & drop**, so you could use drag & drop to transfer file/directory-paths from your file manager to the HashGarten GUI where you can process data further, e. g. calculate hashes from file/directory-paths.
 
 The following file managers have been tested successfully:
 
-| File Manager                                                      | License     | API         | Comment                                                                     |
-|-------------------------------------------------------------------|-------------|-------------|-----------------------------------------------------------------------------|
-| Altap Salamander                                                  | proprietary | Send To     | Freeware                                                                    |
-| Directory Opus                                                    | proprietary | Send To     | Commercial Software                                                         |
-| [Double Commander](https://sourceforge.net/projects/doublecmd/)   | GPLv2       | Send To     | Free Open Source Software                                                   |
-| EF Commander                                                      | proprietary | Send To     | Commercial Software                                                         |
-| [Explorer++](https://github.com/derceg/explorerplusplus)          | GPLv3       | Send To     | Free Open Source Software                                                   |
-| Explorer Commander                                                | proprietary | Send To     | Freeware                                                                    |
-| [Files](https://github.com/files-community/files/)                | MIT         | Send To     | Free Open Source Software                                                   |
-| FileVoyager                                                       | proprietary | Send To     | Freeware                                                                    |
-| FreeCommander                                                     | proprietary | Send To     | Freeware                                                                    |
-| IdosWin Pro                                                       | proprietary | Send To     | Freeware
-| [muCommander](https://github.com/mucommander/mucommander)         | GPLv3       | proprietary | supported via commands.xml, API limit: can pass one file or one dir only to HashGarten, see [issue #1](https://github.com/jonelo/jacksum-fbi-windows/issues)  |
-| Multi Commander                                                   | proprietary | Send To     | Freeware                                                                    |
-| OneCommander                                                      | proprietary | Send To     | Freeware, "Send To" for files only, not for directories                     |
-| Q-Dir                                                             | proprietary | Send To     | Freeware                                                                    |
-| SpeedCommander                                                    | proprietary | Send To     | Commercial Software                                                         |
-| [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) | MIT         | Send To     | Free Open Source Software                                                   |
-| Universal Explorer                                                | proprietary | Send To     | Commercial Software                                                         |
-| Windows File Explorer                                             | proprietary | Send To     | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
-| xplorer²                                                          | proprietary | Send To     | Commercial Software                                                         |
-| XYplorer                                                          | proprietary | Send To     | Commercial Software                                                         |
+| File Manager                                                      | Interfaces   | Comment                                                                     |
+|-------------------------------------------------------------------|--------------|-----------------------------------------------------------------------------|
+| [Altap Salamander](https://www.altap.cz)                          | Send To, DnD | Freeware                                                                    |
+| [Directory Opus](https://www.gpsoft.com.au)                       | Send To, DnD | Commercial Software (Trial)                                                 |
+| [Double Commander](https://sourceforge.net/projects/doublecmd/)   | Send To, DnD | Free/Libre Open Source Software (GPLv2)                                     |
+| [EF Commander](https://www.efsoftware.com/cw/d.htm)               | Send To, DnD | Commercial Software (Trial)                                                 |
+| [Explorer++](https://github.com/derceg/explorerplusplus)          | Send To, DnD | Free Open Source Software (GPLv3)                                           |
+| [Files](https://github.com/files-community/files/)                | Send To, DnD | Free/Libre Open Source Software (MIT), Jacksum icons are garbled            |
+| [FileVoyager](https://www.filevoyager.com)                        | Send To      | Freeware, no DnD support                                                    |
+| [FreeCommander XE](https://freecommander.com)                     | Send To, DnD | Freeware (32 bit), Commercial Software (64 bit)                             |
+| [IdosWin Pro](https://www.idoswin.de)                             | Send To, DnD | Freeware                                                                    |
+| [muCommander](https://github.com/mucommander/mucommander)         | proprietary, DnD | Free/Libre Open Source Software (GPLv3); supported via commands.xml, API limit: can pass one file or one dir only to HashGarten, see [issue #1](https://github.com/jonelo/jacksum-fbi-windows/issues) |
+| [Multi Commander](https://multicommander.com)                     | Send To, DnD | Freeware                                                                    |
+| [OneCommander](https://www.onecommander.com)                      | DnD          | Freeware, "Send to" does not show Jacksum entries                           |
+| [Q-Dir](https://q-dir.com)                                        | Send To, DnD | Freeware                                                                    |
+| [SpeedCommander](https://www.speedproject.com)                    | Send To, DnD | Commercial Software (Trial)                                                 |
+| [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) | Send To, DnD | Free/Libre Open Source Software (MIT)                                       |
+| [Universal Explorer](https://www.spadixbd.com/universal/index.htm) | Send To, DnD   | Commercial Software (Trial), Send To limited to one file, DnD is instable        |
+| [Windows File Explorer](https://support.microsoft.com/en-us/windows/windows-explorer-has-a-new-name-c95f0e92-b1aa-76da-b994-36a7c7c413d7)      | Send To, DnD   | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
+| [xplorer²](https://www.zabkat.com/)                               | Send To, DnD     | Commercial Software (Trial)                                             |
+| [XYplorer](https://www.xyplorer.com/)                             | Send To, DnD     | Commercial Software (Trial)                                             |
 
 
 ## Download
