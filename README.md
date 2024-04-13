@@ -54,7 +54,7 @@ You also find official hashes in the release notes.
 Just extract the .zip file and double-click on the executable called `Jacksum Windows Explorer Integration.exe`.
 Allow Microsoft Defender SmartScreen to start the app. Before you do that you should verify hashes to make sure you have obtained the executable from a reliable source.
 
-The installer installs the JDK 17, Jacksum, and HashGarten to the user's home directory under the folder "Jacksum Windows Explorer Integration". The environment variable called
+The installer installs the JRE 21, Jacksum, and HashGarten to the user's home directory under the folder "Jacksum Windows Explorer Integration". The environment variable called
 JACKSUM_HOME is set with the value of the installation folder, and it is added to the user's PATH, so you also launch Jacksum just by typing `jacksum` if you want to.
 
 You can launch the installer as often as you want.
