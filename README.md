@@ -1,6 +1,6 @@
 ![GitHub downloads](https://img.shields.io/github/downloads/jonelo/jacksum-fbi-windows/total?color=green)
 
-# Jacksum FBI for Windows
+# Jacksum File Manager Integration for Windows
 
 The Jacksum File Browser Integration for Microsoft Windows allows you to access features of [Jacksum](https://github.com/jonelo/jacksum) through [HashGarten](https://github.com/jonelo/HashGarten) from the Send To menu at the Microsoft File Explorer, and other file managers that are supported.
 
@@ -12,10 +12,10 @@ The Jacksum File Browser Integration for Microsoft Windows allows you to access 
     * Processor with x64 chip set
     * 128 MiB free RAM
     * 128 MiB free disk space
-   
-## Supported File Browsers
 
-Any file manager that supports the Microsoft Windows Standard **Send To**-Interface is supported by this integration program. In addition to that, file managers are supported that support a way to pass files or directories to external scripts or programs - which allows them to perform similar functions "like Send To".
+### Supported File Browsers
+
+Any file manager that supports the Microsoft Windows Standard **Send To**-Interface is supported by this integration program. In addition to that, file managers are supported that support a way to pass files or directories to external scripts or programs - which allows them to perform similar functions like "Send To".
 
 If your preferred file manager is not listed below, or it does not support "Send to", chances are high that your file manager supports at least **drag & drop**, so you could use drag & drop to transfer file/directory-paths from your file manager to the HashGarten GUI where you can process data further, e. g. calculate hashes from file/directory-paths.
 
@@ -44,18 +44,20 @@ The following file managers have been tested successfully:
 | [XYplorer](https://www.xyplorer.com/)                             | Send To, DnD     | Commercial Software (Trial)                                             |
 
 
-## Download
+## Life Cycle
 
-Go to https://github.com/jonelo/jacksum-fbi-windows/releases/latest and download the .zip which contains a precompiled executable for Microsoft Windows.
+### Download
+
+Go to the [Download Page](https://github.com/jonelo/jacksum-fbi-windows/releases/latest) and download the .zip file which contains a precompiled executable for Microsoft Windows.
 You also find official hashes in the release notes.
 
-## Installation
+### Installation
 
 Just extract the .zip file and double-click on the executable called `Jacksum Windows Explorer Integration.exe`.
-Allow Microsoft Defender SmartScreen to start the app. Before you do that you should verify hashes to make sure you have obtained the executable from a reliable source.
+Allow Microsoft Defender SmartScreen to start the app. I didn't sign the app, because it would require a fee for me. Before you execute the app you should verify the official hash values to make sure you have obtained the executable from a reliable source. The hash values are available on the [download page](https://github.com/jonelo/jacksum-fbi-windows/releases/latest) or on the [Jacksum homepage](https://jacksum.net/en/download.html).
 
-The installer installs the JRE 21, Jacksum, and HashGarten to the user's home directory under the folder "Jacksum Windows Explorer Integration". The environment variable called
-JACKSUM_HOME is set with the value of the installation folder, and it is added to the user's PATH, so you also launch Jacksum just by typing `jacksum` if you want to.
+The installer installs the JRE 21, Jacksum, and HashGarten to the your homedirectory under the folder `Jacksum Windows File Explorer Integration`. The environment variable called
+JACKSUM_HOME is set with the value of the installation folder, and it is added to the user's PATH, so you can also launch Jacksum just by typing `jacksum` on the command line if you want to.
 
 You can launch the installer as often as you want.
 
@@ -63,10 +65,12 @@ After successful installation a dialog box informs you what have been done.
 
 <img src="https://raw.githubusercontent.com/jonelo/jacksum-fbi-windows/main/docs/images/Jacksum_Windows_Explorer_Integration_2.0.0.png" alt="Jacksum File Explorer Integration Installation" style="vertical-align:top;margin:10px 10px" />
 
-In the "Jacksum Windows Explorer integration" folder you also find an uninstaller.exe which removes
-Jacksum entirely from your disk again.
+### Usage
 
-## Use it
+> [!NOTE]
+> The File Browser Integration does not only integrate Jacksum and HashGarten to your File Browser, it also allows you to call Jacksum from the command line or call HashGarten as standalone app.
+
+#### From your File Browser
 
 On Windows 11, select files and directories, hold down the shift key when you right-click with your mouse and select "Send to".
 On Windows 10, select files and directories, right click with your mouse and select "Send to".
@@ -80,15 +84,38 @@ A video is available at https://www.youtube.com/watch?v=aLE6y7Osjac
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=aLE6y7Osjac" target="_blank"><img src="http://img.youtube.com/vi/aLE6y7Osjac/0.jpg" 
 alt="Jacksum and HashGarten integrated at the Windows File Explorer" width="240" height="180" border="10" /></a>
 
-## Customization
+#### As Standalone Application
+
+Go to the installation folder called `Jacksum Windows File Explorer Integration` which is located under your home directory and double click on the `.jar` file that is prefixed by `HashGarten`.
+
+![grafik](https://github.com/jonelo/jacksum-fbi-windows/assets/10409423/d50f5236-be94-4c80-824b-a15ab6514a82)
+
+
+> [!TIP]
+> If double click on the HashGarten jar does not work, just call [Jarfix](https://johann.loefflmann.net/en/software/jarfix/index.html).
+
+
+#### At the Command Line
+
+Just open a Command Prompt and type `jacksum`.
+
+![grafik](https://github.com/jonelo/jacksum-fbi-windows/assets/10409423/79ae249c-68f7-42b3-a7ed-488752e023c0)
+
+
+### Customization
 
 You can modify the batch (just select item 4 at the Send To menu) if the default customized format does not meet your need or if you use a different editor rather than the Windows Notepad.
 
-## Developer hints
+### Uninstallation
 
-The installer called sendto.nsi is written in NSIS. You need the NSIS compiler to compile .nsi, see also https://nsis.sourceforge.io.
+In the `Jacksum Windows File Explorer Integration` folder you also find an `uninstaller.exe` which removes Jacksum and HashGarten entirely from your disk again.
 
-### Required binaries
+
+## Developer Hints
+
+The installer called `sendto.nsi` is written in NSIS. You need the [NSIS Compiler](https://nsis.sourceforge.io/Main_Page) to compile .nsi to an .exe.
+
+### Required Binaries
 
 - Jacksum - https://github.com/jonelo/jacksum
 - HashGarten - https://github.com/jonelo/HashGarten
@@ -96,6 +123,6 @@ The installer called sendto.nsi is written in NSIS. You need the NSIS compiler t
 - OpenJDK Runtime 11+ - https://adoptium.net
 - NSIS EnVar plug-in - https://nsis.sourceforge.io/EnVar_plug-in 
 
-## Show your support
+## Show Your Support
 
 Please ⭐️ this repository if this project helped you!
