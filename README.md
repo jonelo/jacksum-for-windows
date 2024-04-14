@@ -68,7 +68,7 @@ After successful installation a dialog box informs you what have been done.
 
 ### Usage
 
-> [!NOTE]
+> [!TIP]
 > The File Browser Integration does not only integrate Jacksum and HashGarten to your File Browser, it also allows you to call Jacksum from the command line or call HashGarten as standalone app.
 
 #### From your File Browser
