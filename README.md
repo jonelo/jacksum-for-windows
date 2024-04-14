@@ -39,6 +39,7 @@ The following file managers have been tested successfully:
 | [SpeedCommander](https://www.speedproject.com)                    | Send To, DnD | Commercial Software (Trial)                                                 |
 | [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) | Send To, DnD | Free/Libre Open Source Software (MIT)                                       |
 | [Universal Explorer](https://www.spadixbd.com/universal/index.htm) | Send To, DnD   | Commercial Software (Trial), Send To limited to one file, DnD is instable        |
+| [VioletGiraffe File Commander](https://github.com/VioletGiraffe/file-commander/) | Send To, DnD | Free/Libre Open Source Software (Apache 2.0) |
 | [Windows File Explorer](https://support.microsoft.com/en-us/windows/windows-explorer-has-a-new-name-c95f0e92-b1aa-76da-b994-36a7c7c413d7)      | Send To, DnD   | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
 | [xplorer²](https://www.zabkat.com/)                               | Send To, DnD     | Commercial Software (Trial)                                             |
 | [XYplorer](https://www.xyplorer.com/)                             | Send To, DnD     | Commercial Software (Trial)                                             |
