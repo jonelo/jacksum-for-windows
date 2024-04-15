@@ -20,7 +20,7 @@ Any file manager that supports the Microsoft Windows Standard **Send To**-Interf
 > [!TIP]
 > If your preferred file manager does not support "Send to", chances are high that your file manager supports at least **drag & drop**, so you could use drag & drop to transfer file/directory-paths from your file manager to the HashGarten GUI where you can process data further, e. g. calculate hashes from file/directory-paths.
 
-The following file managers have been tested successfully:
+The following file managers have been tested successfully to work with Jacksum and HashGarten:
 
 | File Manager                                                      | Interfaces   | Comment                                                                     |
 |-------------------------------------------------------------------|--------------|-----------------------------------------------------------------------------|
