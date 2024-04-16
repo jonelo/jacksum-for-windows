@@ -22,28 +22,29 @@ Any file manager that supports the Microsoft Windows Standard **Send To**-Interf
 
 The following file managers have been tested successfully to work with Jacksum and HashGarten:
 
-| File Manager                                                      | Interfaces   | Comment                                                                     |
-|-------------------------------------------------------------------|--------------|-----------------------------------------------------------------------------|
-| [Altap Salamander](https://www.altap.cz)                          | Send To + DnD | Freeware                                                                    |
-| [Directory Opus](https://www.gpsoft.com.au)                       | Send To + DnD | Commercial Software (Trial)                                                 |
-| [Double Commander](https://sourceforge.net/projects/doublecmd/)   | Send To + DnD | Free/Libre Open Source Software (GPLv2)                                     |
-| [EF Commander](https://www.efsoftware.com/cw/d.htm)               | Send To + DnD | Commercial Software (Trial)                                                 |
-| [Explorer++](https://github.com/derceg/explorerplusplus)          | Send To + DnD | Free Open Source Software (GPLv3)                                           |
-| [Files](https://github.com/files-community/files/)                | Send To + DnD | Free/Libre Open Source Software (MIT), Jacksum icons are garbled            |
-| [FileVoyager](https://www.filevoyager.com)                        | Send To      | Freeware, no DnD support                                                    |
-| [FreeCommander XE](https://freecommander.com)                     | Send To + DnD | Freeware (32 bit), Commercial Software (64 bit)                             |
-| [IdosWin Pro](https://www.idoswin.de)                             | Send To + DnD | Freeware                                                                    |
-| [muCommander](https://github.com/mucommander/mucommander)         | proprietary API + DnD | Free/Libre Open Source Software (GPLv3); supported by commands.xml, API limit: can pass one file or one dir only to HashGarten, see [issue #3](https://github.com/jonelo/jacksum-fbi-windows/issues/3) |
-| [Multi Commander](https://multicommander.com)                     | Send To + DnD | Freeware                                                                    |
-| [OneCommander](https://www.onecommander.com)                      | DnD          | Freeware, "Send to" does not show Jacksum entries                           |
-| [Q-Dir](https://q-dir.com)                                        | Send To + DnD | Freeware                                                                    |
-| [SpeedCommander](https://www.speedproject.com)                    | Send To + DnD | Commercial Software (Trial)                                                 |
-| [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer) | Send To + DnD | Free/Libre Open Source Software (MIT)                                       |
-| [Universal Explorer](https://www.spadixbd.com/universal/index.htm) | Send To + DnD   | Commercial Software (Trial), Send To limited to one file, DnD is instable        |
+| File Manager                                                       | Interfaces    | Comment                                                                    |
+|--------------------------------------------------------------------|---------------|----------------------------------------------------------------------------|
+| [Altap Salamander](https://www.altap.cz)                           | Send To + DnD | Freeware                                                                   |
+| [Directory Opus](https://www.gpsoft.com.au)                        | Send To + DnD | Commercial Software (Trial)                                                |
+| [Double Commander](https://sourceforge.net/projects/doublecmd/)    | Send To + DnD | Free/Libre Open Source Software (GPLv2)                                    |
+| [EF Commander](https://www.efsoftware.com/cw/d.htm)                | Send To + DnD | Commercial Software (Trial)                                                |
+| [Everything](https://www.voidtools.com/)                           | DnD           | Freeware                                                                   |
+| [Explorer++](https://github.com/derceg/explorerplusplus)           | Send To + DnD | Free Open Source Software (GPLv3)                                          |
+| [Files](https://github.com/files-community/files/)                 | Send To + DnD | Free/Libre Open Source Software (MIT), Jacksum icons are garbled           |
+| [FileVoyager](https://www.filevoyager.com)                         | Send To       | Freeware, no DnD support                                                   |
+| [FreeCommander XE](https://freecommander.com)                      | Send To + DnD | Freeware (32 bit), Commercial Software (64 bit)                            |
+| [IdosWin Pro](https://www.idoswin.de)                              | Send To + DnD | Freeware                                                                   |
+| [muCommander](https://github.com/mucommander/mucommander)          | proprietary API + DnD | Free/Libre Open Source Software (GPLv3); supported by commands.xml, API limit: can pass one file or one dir only to HashGarten, see [issue #3](https://github.com/jonelo/jacksum-fbi-windows/issues/3) |
+| [Multi Commander](https://multicommander.com)                      | Send To + DnD | Freeware                                                                   |
+| [OneCommander](https://www.onecommander.com)                       | DnD           | Freeware, "Send to" does not show Jacksum entries                          |
+| [Q-Dir](https://q-dir.com)                                         | Send To + DnD | Freeware                                                                   |
+| [SpeedCommander](https://www.speedproject.com)                     | Send To + DnD | Commercial Software (Trial)                                                |
+| [Tablacus Explorer](https://github.com/tablacus/TablacusExplorer)  | Send To + DnD | Free/Libre Open Source Software (MIT)                                      |
+| [Universal Explorer](https://www.spadixbd.com/universal/index.htm) | Send To + DnD   | Commercial Software (Trial), Send To limited to one file, DnD is instable |
 | [VioletGiraffe File Commander](https://github.com/VioletGiraffe/file-commander/) | Send To + DnD | Free/Libre Open Source Software (Apache 2.0) |
 | [Windows File Explorer](https://support.microsoft.com/en-us/windows/windows-explorer-has-a-new-name-c95f0e92-b1aa-76da-b994-36a7c7c413d7)      | Send To + DnD   | Commercial Software, bundled with Microsoft Windows, formerly known as Microsoft Explorer |
-| [xplorer²](https://www.zabkat.com/)                               | Send To + DnD     | Commercial Software (Trial)                                             |
-| [XYplorer](https://www.xyplorer.com/)                             | Send To + DnD     | Commercial Software (Trial)                                             |
+| [xplorer²](https://www.zabkat.com/)                                | Send To + DnD     | Commercial Software (Trial)                                            |
+| [XYplorer](https://www.xyplorer.com/)                              | Send To + DnD     | Commercial Software (Trial)                                            |
 
 
 ## Life Cycle
