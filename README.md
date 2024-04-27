@@ -122,7 +122,13 @@ You can modify the batch (just select item 4 at the Send To menu) if the default
 
 ## Uninstallation
 
-In the `Jacksum Windows File Explorer Integration` folder you also find an `uninstaller.exe` which removes Jacksum and HashGarten entirely from your disk again.
+Go to Program and Features, search for "HashGarten" and select Deinstall from the dots-menu.
+
+![ApplicationFrameHost_mMKeJAoU6f](https://github.com/jonelo/jacksum-fbi-windows/assets/10409423/c68621e1-f24b-46ac-a2ae-4472cf971e08)
+
+Alternatively, go to the `Jacksum for Windows` folder in your home directory, you will find the `uninstall.exe`.
+
+The uninstall program removes Jacksum and HashGarten entirely from your disk.
 
 ## Developer Hints
 
