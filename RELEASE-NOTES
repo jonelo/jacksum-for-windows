@@ -1,5 +1,14 @@
+Jacksum for Windows 2.8.0 - April 27, 2024
+- bundles HashGarten 0.17.0, Jacksum 3.7.0, FlatLaF 3.4.1, and OpenJDK Runtime 21.0.3 (from adoptium.net)
+- changed folder from "Jacksum Windows File Explorer Integration" to "Jacksum for Windows",
+  because we do not only support the Windows File Explorer
+- added an entry to the Add/Remove control panel during installation
+- created an .exe launcher for HashGarten so that it can be run without an open terminal
+- created an shortcut for HashGarten to the user's start menu during installation
+
 Jacksum FBI for Windows 2.7.0 - April 3, 2024
 - bundles HashGarten 0.16.0, Jacksum 3.7.0, FlatLaF 3.4.1, and OpenJDK Runtime 21.0.2 (from adoptium.net)
+- added support for muCommander (issue #3)
 
 Jacksum FBI for Windows 2.6.0 - March 3, 2024
 - bundles HashGarten 0.15.0, Jacksum 3.7.0, FlatLaF 3.4, and OpenJDK Runtime 21.0.2 (from adoptium.net)

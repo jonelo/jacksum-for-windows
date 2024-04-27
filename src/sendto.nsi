@@ -1,29 +1,29 @@
 ﻿Unicode True
-!define VERSION "2.7.0"
+!define VERSION "2.8.0"
 !define JACKSUM_VERSION "3.7.0"
-!define HASHGARTEN_VERSION "0.16.0"
+!define HASHGARTEN_VERSION "0.17.0"
 !define FLATLAF_VERSION "3.4.1"
 !define URL "https://jacksum.net"
-!define APPNAME "Jacksum ${JACKSUM_VERSION} Windows File Explorer Integration ${VERSION}"
+!define APPNAME "Jacksum ${JACKSUM_VERSION} for Windows Installer ${VERSION}"
 !addplugindir .
 !include "x64.nsh"
-
+!include "FileFunc.nsh"
  
 RequestExecutionLevel user
 ShowInstDetails hide
 BrandingText "${URL}"
 #SetDetailsPrint none
 
-Icon "jacksum-sendto.ico"
-Name "Jacksum Windows File Explorer Integration"
+Icon "jacksum.ico"
+Name "Jacksum for Windows"
 Caption "${APPNAME}"
-OutFile "Jacksum Windows File Explorer Integration.exe"
+OutFile "Jacksum for Windows.exe"
 #SilentInstall silent
 #SilentUnInstall silent
 XPStyle on
 
 # Default installation folder
-InstallDir "$PROFILE\Jacksum Windows File Explorer Integration"
+InstallDir "$PROFILE\Jacksum for Windows"
 
 # First is default
 LoadLanguageFile "${NSISDIR}\Contrib\Language files\English.nlf"
@@ -94,6 +94,8 @@ LangString Help ${LANG_GERMAN}            'Hilfe'
 !macroend
 !define ReplaceInFile2 "!insertmacro _ReplaceInFile2" 
 
+!define REGUNINSTKEY "Jacksum"
+!define REGPATH_WINUNINST "Software\Microsoft\Windows\CurrentVersion\Uninstall"
 
 Section
 
@@ -106,7 +108,7 @@ Section
   ReadRegStr $R0 HKLM \
   "SOFTWARE\Microsoft\Windows NT\CurrentVersion" CurrentVersion
   IfErrors 0 winnt
-  MessageBox MB_ICONINFORMATION|MB_OK 'Windows File Explorer Integration is not possible on this Windows release' IDOK +1
+  MessageBox MB_ICONINFORMATION|MB_OK 'Jacksum for Windows installation is not possible on this Windows release' IDOK +1
   Quit
   winnt:
 
@@ -117,6 +119,18 @@ Section
   ${ReplaceInFile2} "$INSTDIR\jacksum.bat" @PATH@ "$INSTDIR" 1 all
   ${ReplaceInFile2} "$INSTDIR\jacksum.bat" @JAVA@ "$INSTDIR\jre\bin\java.exe" 1 all
   ${ReplaceInFile2} "$INSTDIR\jacksum.bat" @JACKSUM_VERSION@ "${JACKSUM_VERSION}" 1 all
+  
+  File hashgarten.exe
+  File hashgarten.ini
+  ${ReplaceInFile2} "$INSTDIR\hashgarten.ini" @PATH@ "$INSTDIR" 1 all
+  ${ReplaceInFile2} "$INSTDIR\hashgarten.ini" @JAVA@ "$INSTDIR\jre\bin\java.exe" 1 all
+  ${ReplaceInFile2} "$INSTDIR\hashgarten.ini" @HASHGARTEN_VERSION@ "${HASHGARTEN_VERSION}" 1 all
+
+
+  File hashgarten.bat
+  ${ReplaceInFile2} "$INSTDIR\hashgarten.bat" @PATH@ "$INSTDIR" 1 all
+  ${ReplaceInFile2} "$INSTDIR\hashgarten.bat" @JAVA@ "$INSTDIR\jre\bin\java.exe" 1 all
+  ${ReplaceInFile2} "$INSTDIR\hashgarten.bat" @HASHGARTEN_VERSION@ "${HASHGARTEN_VERSION}" 1 all
 
   File jacksum-sendto.bat
   ${ReplaceInFile2} "$INSTDIR\jacksum-sendto.bat" @PATH@ "$INSTDIR" 1 all
@@ -124,7 +138,8 @@ Section
   ${ReplaceInFile2} "$INSTDIR\jacksum-sendto.bat" @JACKSUM_VERSION@ "${JACKSUM_VERSION}" 1 all
   ${ReplaceInFile2} "$INSTDIR\jacksum-sendto.bat" @HASHGARTEN_VERSION@ "${HASHGARTEN_VERSION}" 1 all
 
-  File jacksum-sendto.ico
+
+  File jacksum.ico
   File jacksum-${JACKSUM_VERSION}.jar
   File HashGarten-${HASHGARTEN_VERSION}.jar
   File flatlaf-${FLATLAF_VERSION}.jar
@@ -150,13 +165,17 @@ Section
   Delete $SENDTO\Jacksum*
   RMdir /r $SENDTO\Jacksum
 
-  CreateShortCut "$SENDTO\Jacksum - 1) $(CmdSelect).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_gui        " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
-  CreateShortCut "$SENDTO\Jacksum - 2) $(CheckIntegrity).lnk" "$OUTDIR\jacksum-sendto.bat" "cmd_check      " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
-  CreateShortCut "$SENDTO\Jacksum - 3) $(Customized).lnk"     "$OUTDIR\jacksum-sendto.bat" "cmd_custom     " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
-  CreateShortCut "$SENDTO\Jacksum - 4) $(EditBatch).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_edit       " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
+  CreateShortCut "$SENDTO\Jacksum - 1) $(CmdSelect).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_gui        " "$OUTDIR\jacksum.ico" 0 SW_SHOWMINIMIZED
+  CreateShortCut "$SENDTO\Jacksum - 2) $(CheckIntegrity).lnk" "$OUTDIR\jacksum-sendto.bat" "cmd_check      " "$OUTDIR\jacksum.ico" 0 SW_SHOWMINIMIZED
+  CreateShortCut "$SENDTO\Jacksum - 3) $(Customized).lnk"     "$OUTDIR\jacksum-sendto.bat" "cmd_custom     " "$OUTDIR\jacksum.ico" 0 SW_SHOWMINIMIZED
+  CreateShortCut "$SENDTO\Jacksum - 4) $(EditBatch).lnk"      "$OUTDIR\jacksum-sendto.bat" "cmd_edit       " "$OUTDIR\jacksum.ico" 0 SW_SHOWMINIMIZED
   # Help is now accessible from the GUI
-  # CreateShortCut "$SENDTO\Jacksum - 5) $(Help).lnk"           "$OUTDIR\jacksum-sendto.bat" "cmd_help       " "$OUTDIR\jacksum-sendto.ico" 0 SW_SHOWMINIMIZED
+  # CreateShortCut "$SENDTO\Jacksum - 5) $(Help).lnk"           "$OUTDIR\jacksum-sendto.bat" "cmd_help       " "$OUTDIR\jacksum.ico" 0 SW_SHOWMINIMIZED
 
+  CreateDirectory "$SMPROGRAMS"
+  CreateShortCut "$SMPROGRAMS\HashGarten.lnk"                 "$OUTDIR\hashgarten.exe" ""                    "$OUTDIR\jacksum.ico" 0 SW_SHOWMINIMIZED
+#  ${StdUtils.InvokeShellVerb} $0 "$SYSDIR" "$SMPROGRAMS\HashGarten.lnk" ${StdUtils.Const.ShellVerb.PinToTaskbar}
+  
   # Environment variable management in user land
   EnVar::SetHKCU
   DetailPrint "EnVar::SetHKCU"
@@ -192,7 +211,36 @@ Section
   #DetailPrint "EnVar::AddValue returned=|$0|"
   endpath:
 
-  WriteUninstaller $OUTDIR\uninstaller.exe
+  ; Required keys of the add/remove control panel
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "DisplayName" "Jacksum ${JACKSUM_VERSION} + HashGarten ${HASHGARTEN_VERSION}"
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
+  ; Recommended keys of the add/remove control panel
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "Publisher" "Johann N. Löfflmann"
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "DisplayVersion" "${VERSION}"
+  IntFmt $0 "0x%08X" 2
+  WriteRegDWORD HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "VersionMajor" "$0"
+  IntFmt $0 "0x%08X" 8
+  WriteRegDWORD HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "VersionMinor" "$0"
+  IntFmt $0 "0x%08X" 0
+  WriteRegDWORD HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "NoModify" "$0"
+  IntFmt $0 "0x%08X" 1
+  WriteRegDWORD HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "NoRepair" "$0"
+  ; Optional keys of the add/remove control panel
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "DisplayIcon" "$\"$INSTDIR\jacksum.ico$\""
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "HelpLink" "https://github.com/jonelo/jacksum-fbi-windows"
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "URLInfoAbout" "https://github.com/jonelo/jacksum-fbi-windows"
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "URLUpdateInfo" "https://github.com/jonelo/jacksum-fbi-windows/releases"
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "Comments" "Jacksum File Browser Integration"
+  WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\""
+
+  ; Create the uninstaller executable
+  WriteUninstaller $OUTDIR\uninstall.exe
+
+  ; Determine the size of the installation
+  ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
+  IntFmt $0 "0x%08X" $0
+  WriteRegDWORD HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "EstimatedSize" "$0"
+  
   # DetailPrint $(Success)
   MessageBox MB_ICONINFORMATION|MB_OK|MB_SETFOREGROUND $(Success) IDOK +1
   # Quit
@@ -200,12 +248,41 @@ Section
 SectionEnd
 
 
+Section "Uninstall"
+  # Remove the start menu item
+  Delete "$SMPROGRAMS\HashGarten.lnk"
+  
+  # RMdir /r $SENDTO\Jacksum
+  Delete $SENDTO\Jacksum*
+  RMdir /r "$PROFILE\Jacksum for Windows"
+  #Delete $INSTDIR\uninstall.exe ; delete self
+
+  # Delete the JACKSUM_HOME value
+  EnVar::Delete "JACKSUM_HOME"
+  Pop $0
+  DetailPrint "EnVar::Delete returned=$0"
+
+  # Delete %JACKSUM_HOME% from PATH
+  EnVar::DeleteValue "PATH" "%JACKSUM_HOME%"
+  Pop $0
+  DetailPrint "EnVar::DeleteValue returned=$0"
+
+  # Remove the registry tree
+  DeleteRegKey HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}"
+  
+  #MessageBox MB_ICONINFORMATION|MB_OK|MB_SETFOREGROUND $(Uninstall) IDOK +1
+  #Quit
+SectionEnd
+
+
+
 # Prevent Multiple Instances
 Function .onInit
   System::Call "kernel32::CreateMutexA(i 0, i 0, t 'SendToJacksum') i .r1 ?e"
   Pop $R0
   StrCmp $R0 0 +2
-  Abort
+  Abort  
+  SetRegView 64
 FunctionEnd
 
 
@@ -393,22 +470,3 @@ exit:
 FunctionEnd
 
 
-Section "Uninstall"
-  # RMdir /r $SENDTO\Jacksum
-  Delete $SENDTO\Jacksum*
-  RMdir /r "$PROFILE\Jacksum Windows File Explorer Integration"
-  #Delete $INSTDIR\uninstaller.exe ; delete self
-
-  # Delete the JACKSUM_HOME value
-  EnVar::Delete "JACKSUM_HOME"
-  Pop $0
-  DetailPrint "EnVar::Delete returned=|$0|"
-
-  # Delete %JACKSUM_HOME% from PATH
-  EnVar::DeleteValue "PATH" "%JACKSUM_HOME%"
-  Pop $0
-  DetailPrint "EnVar::DeleteValue returned=|$0|"
-
-  #MessageBox MB_ICONINFORMATION|MB_OK|MB_SETFOREGROUND $(Uninstall) IDOK +1
-  #Quit
-SectionEnd

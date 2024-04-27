@@ -4,7 +4,7 @@ rem
 rem Jacksum Windows File Explorer Integration
 rem
 rem powered by Jacksum, <https://jacksum.net>,
-rem Copyright (c) 2006-2023 Johann N. Loefflmann,
+rem Copyright (c) 2006-2024 Johann N. Loefflmann,
 rem <https://johann.loefflmann.net>
 rem
 rem ===============================================
@@ -17,9 +17,9 @@ rem ---------------------
 :gui
 call %JAVAW% -jar %HASHGARTEN_JAR% --header -O relative -U %ERROR_LOG% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
 set ReturnCode=%ERRORLEVEL%
-if "%ReturnCode%"=="2" goto cancel
 if "%ReturnCode%"=="1" goto error
 goto end
+
 
 rem ---------------
 rem check integrity
@@ -27,7 +27,6 @@ rem ---------------
 :check
 call %JAVAW% -jar %HASHGARTEN_JAR% --header -c relative -O %OUTPUT% -U %OUTPUT% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
 set ReturnCode=%ERRORLEVEL%
-if "%ReturnCode%"=="2" goto cancel
 if "%ReturnCode%"=="1" goto error
 goto end
 
@@ -217,16 +216,9 @@ goto end
 
 
 rem -----
-rem In case of error
+rem In case of an error
 rem -----
 :error
-goto end
-
-
-rem -----
-rem In case of cancel
-rem -----
-:cancel
 goto end
 
 
