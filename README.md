@@ -2,12 +2,14 @@
 
 # Jacksum for Windows
 
-Jacksum for Windows is an installation program with which you can easily access functions of [Jacksum](https://github.com/jonelo/jacksum) on Microsoft Windows. It installs
+Jacksum for Windows is an installation program with which you can easily access functions of [Jacksum](https://github.com/jonelo/jacksum) on Microsoft Windows.
 
-  * a standalone **graphical user interface** (GUI) called [HashGarten](https://github.com/jonelo/HashGarten) which uses Jacksum as engine
-  * **file manager integration** of Jacksum and HashGarten for the Windows File Explorer and other file managers
-  * a **Command Line Interface** for direct access to Jacksum on the command prompt
-  * an uninstallation program to remove the installation again
+The installation program installs
+
+- [Jacksum](https://github.com/jonelo/jacksum) which is the hash engine, it also provides the command line interface (CLI)
+- [HashGarten](https://github.com/jonelo/HashGarten) which is a standalone graphical user interface (GUI) for Jacksum
+- script glue to call Jacksum and HashGarten from your preferred file manager
+- an uninstallation program to restore the changes again
 
 ## Requirements
 
@@ -15,12 +17,12 @@ Jacksum for Windows is an installation program with which you can easily access 
 
   * Processor with x64 chip set
   * 128 MiB free RAM
-  * 128 MiB free disk space
+  * 150 MiB free disk space
 
 ### Software
 
   * Microsoft Windows 10 or 11
-  * Microsoft File Explorer or at least one of the supported file browsers below
+  * Microsoft File Explorer or one of the supported file browsers below
 
 #### Supported File Managers
 
