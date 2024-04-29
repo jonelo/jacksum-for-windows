@@ -42,6 +42,7 @@ The following file managers have been tested successfully to work with Jacksum a
 | [Everything](https://www.voidtools.com/)                           | DnD           | Freeware                                                                   |
 | [Explorer++](https://github.com/derceg/explorerplusplus)           | Send To + DnD | Free Open Source Software (GPLv3)                                          |
 | [Files](https://github.com/files-community/files/)                 | Send To + DnD | Free/Libre Open Source Software (MIT), Jacksum icons are garbled           |
+| [Fileside](https://www.fileside.app)                               | DnD           | Commercial Software (Trial)                                                |
 | [FileVoyager](https://www.filevoyager.com)                         | Send To       | Freeware, no DnD support                                                   |
 | [FreeCommander XE](https://freecommander.com)                      | Send To + DnD | Freeware (32 bit), Commercial Software (64 bit)                            |
 | [IdosWin Pro](https://www.idoswin.de)                              | Send To + DnD | Freeware                                                                   |
