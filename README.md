@@ -44,6 +44,7 @@ The following file managers have been tested successfully to work with Jacksum a
 | [Files](https://github.com/files-community/files/)                 | Send To + DnD | Free/Libre Open Source Software (MIT), Jacksum icons are garbled           |
 | [Fileside](https://www.fileside.app)                               | DnD           | Commercial Software (Trial)                                                |
 | [FileVoyager](https://www.filevoyager.com)                         | Send To       | Freeware, no DnD support                                                   |
+| [FileZilla](https://filezilla-project.org/)                        | DnD           | Free/Libre Open Source Software (GPLv2)                                    |
 | [FreeCommander XE](https://freecommander.com)                      | Send To + DnD | Freeware (32 bit), Commercial Software (64 bit)                            |
 | [IdosWin Pro](https://www.idoswin.de)                              | Send To + DnD | Freeware                                                                   |
 | [muCommander](https://github.com/mucommander/mucommander)          | proprietary API + DnD | Free/Libre Open Source Software (GPLv3); supported by commands.xml, API limit: can pass one file or one dir only to HashGarten, see [issue #3](https://github.com/jonelo/jacksum-fbi-windows/issues/3) |
