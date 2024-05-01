@@ -41,6 +41,7 @@ The following file managers have been tested successfully to work with Jacksum a
 | [EF Commander](https://www.efsoftware.com/cw/d.htm)                | Send To + DnD | Commercial Software (Trial)                                                |
 | [Everything](https://www.voidtools.com/)                           | DnD           | Freeware                                                                   |
 | [Explorer++](https://github.com/derceg/explorerplusplus)           | Send To + DnD | Free Open Source Software (GPLv3)                                          |
+| [File-IO](https://www.file-io.de/)                                 | Send To       | Commercial Software (Trial), limits: files only, no directories            |
 | [Files](https://github.com/files-community/files/)                 | Send To + DnD | Free/Libre Open Source Software (MIT), Jacksum icons are garbled           |
 | [Fileside](https://www.fileside.app)                               | DnD           | Commercial Software (Trial)                                                |
 | [FileVoyager](https://www.filevoyager.com)                         | Send To       | Freeware, no DnD support                                                   |
