@@ -75,7 +75,7 @@ Just extract the .zip file and double-click on the executable called `Jacksum fo
 Allow Microsoft Defender SmartScreen to start the app. I didn't sign the app, because it would require a fee for me.
 Before you execute the app you should verify the official hash values to make sure you have obtained the executable from a reliable source. The hash values are available on the [download page](https://github.com/jonelo/jacksum-fbi-windows/releases/latest) or on the [Jacksum homepage](https://jacksum.net/en/download.html).
 
-The installer installs the JRE 21 LTS, Jacksum, and HashGarten to your homedirectory under the folder `Jacksum for Windows`. The environment variable called
+The installer installs the JRE 25 LTS, Jacksum, and HashGarten to your homedirectory under the folder `Jacksum for Windows`. The environment variable called
 JACKSUM_HOME is set with the value of the installation folder, and it is added to the user's PATH, so you can also launch Jacksum just by typing `jacksum` on the command line if you want to.
 
 You can launch the installer as often as you want.
@@ -148,7 +148,7 @@ The installer called `sendto.nsi` is written in NSIS. You need the [NSIS Compile
 - Jacksum - https://github.com/jonelo/jacksum
 - HashGarten - https://github.com/jonelo/HashGarten
 - FlatLaF - https://github.com/JFormDesigner/FlatLaf
-- OpenJDK Runtime 11+ - https://adoptium.net
+- OpenJDK Runtime 21+ - https://adoptium.net
 - NSIS EnVar plug-in - https://nsis.sourceforge.io/EnVar_plug-in 
 
 ## Show Your Support
