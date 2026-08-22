@@ -1,8 +1,9 @@
 ﻿Unicode True
-!define VERSION "2.9.0"
-!define JACKSUM_VERSION "3.7.0"
-!define HASHGARTEN_VERSION "0.18.0"
-!define FLATLAF_VERSION "3.5.2"
+!define VERSION "2.10.0"
+!define JACKSUM_VERSION "4.0.0"
+!define HASHGARTEN_VERSION "0.19.0"
+!define FLATLAF_VERSION "3.7.2"
+
 !define URL "https://jacksum.net"
 !define APPNAME "Jacksum ${JACKSUM_VERSION} for Windows Installer ${VERSION}"
 !addplugindir .

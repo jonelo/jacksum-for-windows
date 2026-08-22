@@ -1,3 +1,7 @@
+Jacksum for Windows 2.10.0 - August 22, 2026
+- bundles HashGarten 0.19.0, Jacksum 4.0.0, FlatLaF 3.7.2, and OpenJDK Runtime 25.0.4.1+1-LTS (from adoptium.net)
+- Installer made with NSIS v3.11
+
 Jacksum for Windows 2.9.0 - October 26, 2024
 - bundles HashGarten 0.18.0, Jacksum 3.7.0, FlatLaF 3.5.2, and OpenJDK Runtime 21.0.5+11-LTS (from adoptium.net)
 - Installer made with NSIS 3.10

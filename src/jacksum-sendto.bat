@@ -4,7 +4,7 @@ rem
 rem Jacksum Windows File Explorer Integration
 rem
 rem powered by Jacksum, <https://jacksum.net>,
-rem Copyright (c) 2006-2024 Johann N. Loefflmann,
+rem Copyright (c) 2006-2026 Johann N. Löfflmann,
 rem <https://johann.loefflmann.net>
 rem
 rem ===============================================
@@ -15,7 +15,7 @@ rem ---------------------
 rem calculate hash values
 rem ---------------------
 :gui
-call %JAVAW% -jar %HASHGARTEN_JAR% --header -O relative -U %ERROR_LOG% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
+call %JAVAW% -jar %HASHGARTEN_JAR% --header -O relative -U %ERROR_LOG% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,info,summary
 set ReturnCode=%ERRORLEVEL%
 if "%ReturnCode%"=="1" goto error
 goto end
@@ -25,7 +25,7 @@ rem ---------------
 rem check integrity
 rem ---------------
 :check
-call %JAVAW% -jar %HASHGARTEN_JAR% --header -c relative -O %OUTPUT% -U %OUTPUT% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,summary
+call %JAVAW% -jar %HASHGARTEN_JAR% --header -c relative -O %OUTPUT% -U %OUTPUT% --file-list-format ssv --file-list %FILE_LIST% --path-relative-to-entry 1 --verbose default,info,summary
 set ReturnCode=%ERRORLEVEL%
 if "%ReturnCode%"=="1" goto error
 goto end
@@ -35,46 +35,46 @@ rem -----------------
 rem customized output
 rem -----------------
 :custom
-set ALGO=md5+sha1+ripemd160+tiger+^
+set ALGO=md5+sha1+ripemd160+^
 sha256+sha512/256+sha3-256+shake128+sm3+streebog256+kupyna-256+lsh-256-256+blake3+k12+keccak256+^
-sha512+sha3-512+shake256+streebog512+kupyna-512+lsh-512-512+blake2b-512+keccak512+m14+skein-512-512+whirlpool
+sha512+sha3-512+shake256+kupyna-512+lsh-512-512+blake2b-512+keccak512+m14+skein-512-512+whirlpool
 set TEMPLATE=^
 File info:#SEPARATOR^
     name:                      #FILENAME{name}#SEPARATOR^
     path:                      #FILENAME{path}#SEPARATOR^
     size:                      #FILESIZE bytes#SEPARATOR^
 #SEPARATOR^
-legacy message digests (avoid if possible):#SEPARATOR^
-    MD5 (128 bit):             #HASH{md5}#SEPARATOR^
-    SHA1 (160 bit):            #HASH{sha1}#SEPARATOR^
-    RIPEMD-160 (160 bit):      #HASH{ripemd160}#SEPARATOR^
-    TIGER (192 bit):           #HASH{tiger}#SEPARATOR^
-#SEPARATOR^
 256 bit message digests (hex):#SEPARATOR^
+    SHA3-256 (USA):            #HASH{sha3-256}#SEPARATOR^
     SHA-256 (USA):             #HASH{sha256}#SEPARATOR^
     SHA-512/256 (USA):         #HASH{sha512/256}#SEPARATOR^
-    SHA3-256 (USA):            #HASH{sha3-256}#SEPARATOR^
     SHAKE128 (USA):            #HASH{shake128}#SEPARATOR^
-    SM3 (China):               #HASH{sm3}#SEPARATOR^
-    STREEBOG 256 (Russia):     #HASH{streebog256}#SEPARATOR^
-    Kupyna256 (Ukraine):       #HASH{kupyna-256}#SEPARATOR^
-    LSH-256-256 (South Korea): #HASH{lsh-256-256}#SEPARATOR^
     BLAKE3:                    #HASH{blake3}#SEPARATOR^
     KangarooTwelve:            #HASH{k12}#SEPARATOR^
     KECCAK256:                 #HASH{keccak256}#SEPARATOR^
+    Kupyna-256 (Ukraine):      #HASH{kupyna-256}#SEPARATOR^
+    LSH-256-256 (South Korea): #HASH{lsh-256-256}#SEPARATOR^
+    SM3 (China):               #HASH{sm3}#SEPARATOR^
+    STREEBOG 256 (Russia):     #HASH{streebog256}#SEPARATOR^
 #SEPARATOR^
 512 bit message digests (base64, no padding):#SEPARATOR^
-    SHA-512 (USA):             #HASH{sha512,base64-nopadding}#SEPARATOR^
     SHA3-512 (USA):            #HASH{sha3-512,base64-nopadding}#SEPARATOR^
+    SHA-512 (USA):             #HASH{sha512,base64-nopadding}#SEPARATOR^
     SHAKE256 (USA):            #HASH{shake256,base64-nopadding}#SEPARATOR^
-    STREEBOG 512 (Russia):     #HASH{streebog512,base64-nopadding}#SEPARATOR^
-    KUPYNA-512 (Ukraine):      #HASH{kupyna-512,base64-nopadding}#SEPARATOR^
-    LSH-512-512 (South Korea): #HASH{lsh-512-512,base64-nopadding}#SEPARATOR^
     BLAKE2b-512:               #HASH{blake2b-512,base64-nopadding}#SEPARATOR^
     KECCAK512:                 #HASH{keccak512,base64-nopadding}#SEPARATOR^
+    KUPYNA-512 (Ukraine):      #HASH{kupyna-512,base64-nopadding}#SEPARATOR^
+    LSH-512-512 (South Korea): #HASH{lsh-512-512,base64-nopadding}#SEPARATOR^
     MarsupilamiFourteen:       #HASH{m14,base64-nopadding}#SEPARATOR^
     SKEIN-512-512:             #HASH{skein-512-512,base64-nopadding}#SEPARATOR^
-    WHIRLPOOL:                 #HASH{whirlpool,base64-nopadding}#SEPARATOR#SEPARATOR
+    WHIRLPOOL:                 #HASH{whirlpool,base64-nopadding}#SEPARATOR^
+#SEPARATOR^
+Legacy message digests (hex, avoid if possible):#SEPARATOR^
+    MD5 (128 bit):             #HASH{md5}#SEPARATOR^
+    RIPEMD-160 (160 bit):      #HASH{ripemd160}#SEPARATOR^
+    SHA1 (160 bit):            #HASH{sha1}#SEPARATOR^
+#SEPARATOR
+
 set TEMPLATE="%TEMPLATE%"
 
 call %JAVAW% -jar %JACKSUM_JAR% ^
