@@ -1,7 +1,7 @@
 ﻿Unicode True
-!define VERSION "2.10.0"
-!define JACKSUM_VERSION "4.0.0"
-!define HASHGARTEN_VERSION "0.19.0"
+!define VERSION "2.11.0"
+!define JACKSUM_VERSION "4.0.2"
+!define HASHGARTEN_VERSION "0.21.0"
 !define FLATLAF_VERSION "3.7.2"
 
 !define URL "https://jacksum.net"
