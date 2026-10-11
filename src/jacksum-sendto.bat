@@ -139,7 +139,7 @@ rem ----------
 :javacheck
 if exist %JAVAW% goto javafound
 echo ERROR: %JAVAW% not found. > %OUTPUT%
-echo Please modify "@PATH@\jacksum.bat" or reinstall Jacksum. >> %OUTPUT%
+echo Please modify "@PATH@\jacksum-sendto.bat" or reinstall Jacksum. >> %OUTPUT%
 echo For more information please go to %JACKSUM_URL% >> %OUTPUT%
 goto view
 
@@ -195,13 +195,11 @@ rem from here Java is required
 goto javacheck
 :javafound
 if "cmd_gui" == "%1" goto gui
-if "cmd_latest" == "%1" goto latest
 if "cmd_all" == "%1" goto all
 if "cmd_check" == "%1" goto check
 if "cmd_custom" == "%1" goto custom
 if "cmd_help" == "%1" goto help
 if "cmd_edit" == "%1" goto edit
-set ALGO=%1
 goto usage
 
 

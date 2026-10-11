@@ -3,6 +3,8 @@
 !define JACKSUM_VERSION "4.0.2"
 !define HASHGARTEN_VERSION "0.21.0"
 !define FLATLAF_VERSION "3.7.2"
+# Derive VERSION_MAJOR and VERSION_MINOR from VERSION
+!searchparse "${VERSION}" "" VERSION_MAJOR "." VERSION_MINOR "."
 
 !define URL "https://jacksum.net"
 !define APPNAME "Jacksum ${JACKSUM_VERSION} for Windows Installer ${VERSION}"
@@ -218,9 +220,9 @@ Section
   ; Recommended keys of the add/remove control panel
   WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "Publisher" "Johann N. Löfflmann"
   WriteRegStr HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "DisplayVersion" "${VERSION}"
-  IntFmt $0 "0x%08X" 2
+  IntFmt $0 "0x%08X" ${VERSION_MAJOR}
   WriteRegDWORD HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "VersionMajor" "$0"
-  IntFmt $0 "0x%08X" 8
+  IntFmt $0 "0x%08X" ${VERSION_MINOR}
   WriteRegDWORD HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "VersionMinor" "$0"
   IntFmt $0 "0x%08X" 0
   WriteRegDWORD HKCU "${REGPATH_WINUNINST}\${REGUNINSTKEY}" "NoModify" "$0"
@@ -256,7 +258,12 @@ Section "Uninstall"
   # RMdir /r $SENDTO\Jacksum
   Delete $SENDTO\Jacksum*
   RMdir /r "$PROFILE\Jacksum for Windows"
+  # Remove the HashGarten settings file
+  Delete "$PROFILE\.HashGarten.properties"
   #Delete $INSTDIR\uninstall.exe ; delete self
+
+  # Environment variable management in user land
+  EnVar::SetHKCU
 
   # Delete the JACKSUM_HOME value
   EnVar::Delete "JACKSUM_HOME"
@@ -279,7 +286,7 @@ SectionEnd
 
 # Prevent Multiple Instances
 Function .onInit
-  System::Call "kernel32::CreateMutexA(i 0, i 0, t 'SendToJacksum') i .r1 ?e"
+  System::Call "kernel32::CreateMutex(i 0, i 0, t 'SendToJacksum') i .r1 ?e"
   Pop $R0
   StrCmp $R0 0 +2
   Abort  

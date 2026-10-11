@@ -9,7 +9,7 @@
 -->
 <commands>
   <command alias="Jacksum - 1) Berechne Hashwerte"            value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 1)\ Berechne\ Hashwerte.lnk&quot; &quot;$f&quot;" />
-  <command alias="Jacksum - 2) Überprüfe die Datenintegrität" value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 2)\ Überprüfe\ die\ Datenintegrität&quot; &quot;$f&quot;" />
-  <command alias="Jacksum - 3) Benutzerdefinierte Ausgabe"    value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 3)\ Benutzerdefinierte Ausgabe.lnk&quot; &quot;$f&quot;" />
+  <command alias="Jacksum - 2) Überprüfe die Datenintegrität" value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 2)\ Überprüfe\ die\ Datenintegrität.lnk&quot; &quot;$f&quot;" />
+  <command alias="Jacksum - 3) Benutzerdefinierte Ausgabe"    value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 3)\ Benutzerdefinierte\ Ausgabe.lnk&quot; &quot;$f&quot;" />
   <command alias="Jacksum - 4) Bearbeite Batch"               value="cmd /c start &quot;&quot; &quot;@SENDTO@\\Jacksum\ -\ 4)\ Bearbeite\ Batch.lnk&quot;" />
 </commands>

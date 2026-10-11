@@ -1,6 +1,14 @@
-Jacksum for Widows 2.11.0 - October 11, 2026
+Jacksum for Windows 2.11.0 - October 11, 2026
 - bundles HashGarten 0.21.0, Jacksum 4.0.2, FlatLaF 3.7.2, and OpenJDK Runtime 25.0.4.1+1-LTS (from adoptium.net)
 - Installer made with NSIS v3.11
+- fixed the muCommander commands "Check the data integrity" (EN, DE) and "Benutzerdefinierte Ausgabe" (DE)
+- the version shown in the Add/Remove control panel is now derived from the installer version
+- the uninstaller removes the HashGarten settings file .HashGarten.properties from the home directory
+- the uninstaller explicitly removes the environment variables from the user's environment (HKCU)
+- fixed the single instance check of the installer for Unicode builds
+- fixed a wrong file name in the error message of jacksum-sendto.bat if Java cannot be found
+- removed unused code from jacksum-sendto.bat
+- improved the English in the README
 
 Jacksum for Windows 2.10.0 - August 22, 2026
 - bundles HashGarten 0.19.0, Jacksum 4.0.0, FlatLaF 3.7.2, and OpenJDK Runtime 25.0.4.1+1-LTS (from adoptium.net)
